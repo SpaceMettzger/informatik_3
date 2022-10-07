@@ -12,6 +12,7 @@ public:
     CDate(int year, int month, int day);
 
     void SetDate(int year, int month, int day);
+    void print();
 
     int getYear() { return m_year; }
     int getMonth() { return m_month; }

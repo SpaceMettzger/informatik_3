@@ -17,7 +17,7 @@ class CDate {
         m_day = day;
     }
 
-    void Print() {
+    void print() {
         printf("%2i.%2i.%2i", m_day, m_month, m_year);
     }
 };
