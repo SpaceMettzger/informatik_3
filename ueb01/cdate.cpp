@@ -1,31 +1,22 @@
-#include <stdio.h>
+#include "cdate.hpp"
+#include <iostream>
 #include <ctime>
-#include "cdate.h"
 
 
-class CDate {
-    private:
-    int m_day, m_month, m_year;
+CDate::CDate() {
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    m_year = ltm->tm_year + 1900;
+    m_month = ltm->tm_mon + 1;
+    m_day = ltm->tm_mday;
+ }
 
-    public:
+CDate::CDate(int day, int month, int year):
+    m_year(year),
+    m_month(month),
+    m_day(day)
+    {}
 
-    CDate() {
-        time_t now = time(0);
-        tm *ltm = localtime(&now);
-        setDate(m_year = ltm->tm_year, m_month = ltm->tm_mon, m_day = ltm->tm_mday);
-    }
-
-    CDate(int year, int month, int day) {
-        setDate(m_year = year, m_month = month, m_day = day);
-    }
-
-    void setDate(int year, int month, int day) {
-        m_year = year;
-        m_month = month;
-        m_day = day;
-    }
-
-    void print() {
-        printf("%2i.%2i.%2i", m_day, m_month, m_year);
-    }
-};
+void CDate::print() {
+    std::cout << m_day << ":" << m_month << ":" << m_year;
+}

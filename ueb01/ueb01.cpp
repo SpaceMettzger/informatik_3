@@ -2,8 +2,8 @@
 
 using namespace std;
 
-#include "cdate.h"
-#include "ctime.h"
+#include "cdate.hpp"
+#include "ctime.hpp"
 
 int main()
 {
