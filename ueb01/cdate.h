@@ -1,12 +1,10 @@
 #ifndef CDATE_H
 #define CDATE_H
 
-class CDate
-{
+class CDate {
+
 private:
-    int m_year;
-    int m_month;
-    int m_day;
+    int m_year, m_month, m_day;
 
 public:
     CDate();

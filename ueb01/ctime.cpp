@@ -15,11 +15,16 @@ class CTime {
         setTime(m_hours = ltm->tm_hour, m_minutes = ltm->tm_min, m_seconds = ltm->tm_sec);
     }
 
+    CTime(int hours, int minutes) {
+        setTime(m_hours = hours, m_minutes = minutes);
+    }
+
+
     CTime(int hours, int minutes, int seconds = 0) {
         setTime(m_hours = hours, m_minutes = minutes, m_seconds = seconds);
     }
 
-    void setTime(int hours, int minutes, int seconds) {
+    void setTime(int hours, int minutes, int seconds= 0) {
         m_hours = hours;
         m_minutes = minutes;
         m_seconds = seconds;
