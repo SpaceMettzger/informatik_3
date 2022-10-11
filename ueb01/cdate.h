@@ -9,14 +9,10 @@ private:
     int m_day;
 
 public:
+    CDate();
     CDate(int year, int month, int day);
-
     void SetDate(int year, int month, int day);
     void print();
-
-    int getYear() { return m_year; }
-    int getMonth() { return m_month; }
-    int getDay()  { return m_day; }
 };
 
 #endif
