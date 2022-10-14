@@ -11,7 +11,7 @@ CDate::CDate() {
     m_day = ltm->tm_mday;
  }
 
-CDate::CDate(int day, int month, int year):
+CDate::CDate(short day, short month, short year):
     m_year(year),
     m_month(month),
     m_day(day)

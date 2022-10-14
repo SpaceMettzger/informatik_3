@@ -1,7 +1,7 @@
 // Objektorientierte Programmierung
 
 // Unterschiede C/C++
-//----------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 //In-Line Kommentare
 // Bisher: // zum erstellen eines in-line Kommentars. Jetzt: 
 /*Beispieltext*/
@@ -38,7 +38,7 @@
 // f(5, 7);
 
 // Doppelte Funktionsnamen
-// In C++ ist es möglich, eine Funktion mit unterschiedlichen Parametern aber dem gleichen Funktionsnamen zu definieren
+// In C++ ist es möglich, eine Funktion mit unterschiedlichen Parametern aber dem gleichen Funktionsnamen zu definieren (Überbelegung)
 // int f (int a) {return a;}        -> intern als fii gespeichert (i = int parameter, i = int return value)
 // int f (double a) {return a;}     -> intern als fdd gespeichert (d = double parameter, d = double return value)
 
@@ -49,3 +49,27 @@
 
 // extern C
 // Nachlesen
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+// Objekte und Klassen
+
+// Klassen entsprechen gedanklich Datentypen
+// Objekte entsprechen gedanklich Variablen
+
+int i;
+ifstream Datei;
+
+class K {                       // struct S {
+    private:                    //      int Wert;
+        int Wert;               //      ...
+    public:                     //      ...
+         void setWert(int W) {  //      ...
+            Wert = W;           // };
+         }                      //
+};                              
+
+K KObj;                         // S SObj;
+KObj.Wert = 0;                  // SObj.Wert = 0;
+ //-> geht nicht für Klassen, weil Wert private ist 
+

@@ -11,7 +11,7 @@ CTime::CTime() {
         m_seconds = ltm->tm_sec;
 }
 
-CTime::CTime(int hours, int minutes, int seconds):
+CTime::CTime(short hours, short minutes, short seconds):
     m_hours(hours),
     m_minutes(minutes),
     m_seconds(seconds)

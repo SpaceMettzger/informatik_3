@@ -5,11 +5,11 @@ class CDate {
 
 public:
     CDate();
-    CDate(int year, int month, int day);
+    CDate(short year, short month, short day);
     void print();
 
 private:
-    int m_year, m_month, m_day;
+    short m_year, m_month, m_day;
 
 };
 
