@@ -1,5 +1,6 @@
 #include "ctime.hpp"
 #include <ctime>
+#include <iomanip>
 #include <iostream>
 
 
@@ -18,13 +19,14 @@ CTime::CTime(short hours, short minutes, short seconds):
     {}
 
 void CTime::print() {
-    std::cout.fill('0');
-    std::cout.width(2);
+    char fl;
+    fl = std::cout.fill('0');
     if (m_seconds == 0) {
-        std::cout << m_hours << ":" << m_minutes;
+        std::cout << std::setw(2) << m_hours << ":" << std::setw(2) << m_minutes;
     }
     else {
-        std::cout << m_hours << ":" << m_minutes << ":" << m_seconds;
+        std::cout << std::setw(2) << m_hours << ":" << std::setw(2) << m_minutes << ":" << std::setw(2) << m_seconds;
     }
+    std::cout.fill(fl);
 
 }
