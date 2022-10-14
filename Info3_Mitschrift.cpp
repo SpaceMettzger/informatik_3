@@ -73,3 +73,50 @@ K KObj;                         // S SObj;
 KObj.Wert = 0;                  // SObj.Wert = 0;
  //-> geht nicht für Klassen, weil Wert private ist 
 
+# include <stdio.h>
+
+class CAmpel {
+    int rot, gelb, gruen;
+    
+    public:
+        void setRot();
+        CAmpel();
+        CAmpel(int, int, int = 0);
+        ~CAmpel();
+};
+
+// Methoden von Klassen werden außerhalb von Klassen definiert.
+
+void CAmpel::setRot() {
+    gelb = gruen = 0;
+    rot = 1;
+}
+
+// Klassen müssen inititalisiert werden. Das geschieht über einen Konstruktor:
+CAmpel::CAmpel() {
+    rot = 1;
+    gelb = gruen = 0;
+}
+
+// Es können mehrere Konstruktoren für eine Klasse erstellt werden. Das macht Sinn, wenn man den Aufruf mit unterschiedlich vielen Variablen
+// oder unterschiedlichen Variablentypen ermöglichen will.
+CAmpel::CAmpel(int r, int ge, int gr) {
+    rot = r;
+    gelb = ge;
+    gruen = gr;
+}
+
+// Ein Destruktor kann nur einmal pro Klasse erstellt werden. Er wird zu Ende der Laufzeit aufgerufen. Das kann Sinn machen, wenn man zum Ende 
+// reservierten Speicher wieder freigeben möchte oder etwas aus der Klasse in eine Textdatei schreiben möchte. 
+CAmpel::~CAmpel() {
+    rot = 1;
+    gelb = gruen = 0;
+}
+
+int main() {
+    CAmpel A1, A2;
+    CAmpel A3(1, 0), A4(0, 0, 1);
+    A1.setRot();
+
+    return 0;
+}
