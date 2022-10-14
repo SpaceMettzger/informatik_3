@@ -18,5 +18,7 @@ CDate::CDate(int day, int month, int year):
     {}
 
 void CDate::print() {
+    std::cout.fill( '0' );
+    std::cout.width(2);
     std::cout << m_day << ":" << m_month << ":" << m_year;
 }
