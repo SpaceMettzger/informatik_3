@@ -81,6 +81,7 @@ class CAmpel {
     public:
         void setRot();
         CAmpel();
+        CAmpel(int, int);
         CAmpel(int, int, int = 0);
         ~CAmpel();
 };
@@ -104,6 +105,12 @@ CAmpel::CAmpel(int r, int ge, int gr) {
     rot = r;
     gelb = ge;
     gruen = gr;
+}
+
+// Durch das hinzufügen einer Initialisierungsliste werden die Werte der Klasse sofort initialisiert. Dadurch müssen die Variablen nicht erst wieder 
+// aus dem Speicher geholt werden. Dadurch wird die Erstellung der Klasse beschleunigt. 
+CAmpel::CAmpel(int r, int ge) 
+    : rot(r), gelb(ge) {
 }
 
 // Ein Destruktor kann nur einmal pro Klasse erstellt werden. Er wird zu Ende der Laufzeit aufgerufen. Das kann Sinn machen, wenn man zum Ende 
