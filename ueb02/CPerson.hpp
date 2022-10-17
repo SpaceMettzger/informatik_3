@@ -2,7 +2,6 @@
 #define CPERSON_HPP
 
 #include "caddress.hpp"
-#include "cdate.hpp"
 
 class CPerson {
 

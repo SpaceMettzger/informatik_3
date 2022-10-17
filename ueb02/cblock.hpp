@@ -14,7 +14,6 @@ public:
 
 private:
     short m_block_id;
-
 };
 
 

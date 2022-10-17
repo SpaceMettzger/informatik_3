@@ -5,14 +5,14 @@
 
 CBlock::CBlock(short block_id, CTime *start_time):
     m_block_id(block_id),
-    m_start_time(start_time)
+    m_start_time(&start_time)
     {
         m_end_time = getEnd(start_time);
     }
 
 
-CTime CBlock::getEnd(CTime start_time) {
-    int hours, minutes, seconds = start_time.get_minutes();
+CTime CBlock::getEnd(CTime *start_time) {
+    int hours, minutes, seconds = &start_time.get_minutes();
     hours++;
 
     if (minutes > 30) {
