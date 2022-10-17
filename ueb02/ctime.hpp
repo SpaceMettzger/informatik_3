@@ -6,6 +6,7 @@ class CTime {
 public:
     CTime();
     CTime(short hours, short minutes, short seconds = 0);
+    int get_time();
     void print();
 
 private:

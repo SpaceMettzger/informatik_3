@@ -18,6 +18,10 @@ CTime::CTime(short hours, short minutes, short seconds):
     m_seconds(seconds)
     {}
 
+int CTime::get_time() {
+    return m_hours, m_minutes, m_seconds;
+}
+
 void CTime::print() {
     char fl;
     fl = std::cout.fill('0');
