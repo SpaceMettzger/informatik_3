@@ -2,12 +2,12 @@
 
 using namespace std;
 
-#include "cdate.h"
-#include "ctime.h"
-#include "cblock.h"
-#include "croom.h"
-#include "caddress.h"
-#include "cperson.h"
+#include "cdate.hpp"
+#include "ctime.hpp"
+#include "cblock.hpp"
+#include "croom.hpp"
+#include "caddress.hpp"
+#include "cperson.hpp"
 
 int main()
 {
