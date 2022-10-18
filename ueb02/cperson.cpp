@@ -4,10 +4,10 @@
 #include <iostream>
 
 
-CPerson::CPerson(char name, CAddress address, CDate birth_date):
-    m_name(name),
-    m_address(address),
-    m_birth_date(birth_date)
+CPerson::CPerson(char const *name, char const *street, char const *number, short zip, char const *city, short year, short month, short day):
+    m_name(*name),
+    m_address(street, number, zip, city),
+    m_birth_date(year, month, day)
     {}
 
 void CPerson::print() {

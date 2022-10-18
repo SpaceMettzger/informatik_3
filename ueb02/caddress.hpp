@@ -4,7 +4,7 @@
 class CAddress {
 
 public:
-    CAddress(char, char, int, char);
+    CAddress(char const *, char const *, int, char const *);
     void print();
 
 private:
@@ -12,7 +12,7 @@ private:
     char m_number;
     int m_zip;
     char m_city;
-    
+
 };
 
 #endif

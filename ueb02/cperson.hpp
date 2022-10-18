@@ -7,7 +7,7 @@
 class CPerson {
 
 public:
-    CPerson(char, CAddress, CDate);
+    CPerson(char const *, char const *, char const *, short, char const *, short, short, short);
     void print();
     CAddress getAddress();
 
