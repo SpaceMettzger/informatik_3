@@ -11,9 +11,10 @@ CPerson::CPerson(char name, CAddress address, CDate birth_date):
     {}
 
 void CPerson::print() {
-    std::cout << m_name << "(*" << m_birth_date.print() << ")";
+    short year, month, day = m_birth_date.get_date();
+    std::cout << m_name << "(*" << year << "." << month << "." << day  << ")";
 }
 
-void CPerson::getAddress() {
+CAddress CPerson::getAddress() {
     return m_address;
 }

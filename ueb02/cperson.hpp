@@ -9,7 +9,7 @@ class CPerson {
 public:
     CPerson(char, CAddress, CDate);
     void print();
-    void getAddress();
+    CAddress getAddress();
 
 private:
     char m_name;

@@ -24,3 +24,7 @@ void CDate::print() {
     std::cout << std::setw(2) << m_day << ":" << std::setw(2) << m_month << ":" << std::setw(2) << m_year;
     std::cout.fill(fl);
 }
+
+short CDate::get_date() {
+    return m_year, m_month, m_day;
+}

@@ -2,9 +2,9 @@
 #include <iostream>
 
 
-CRoom::CRoom(char name, char building, short seats):
-    m_name(name),
-    m_building(building),
+CRoom::CRoom(char const* name, char const* building, short seats):
+    m_name(*name),
+    m_building(*building),
     m_seats(seats)
     {}
 

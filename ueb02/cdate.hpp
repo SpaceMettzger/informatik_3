@@ -7,6 +7,7 @@ public:
     CDate();
     CDate(short year, short month, short day);
     void print();
+    short get_date();
 
 private:
     short m_year, m_month, m_day;

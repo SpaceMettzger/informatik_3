@@ -3,22 +3,22 @@
 #include <iostream>
 
 
-CBlock::CBlock(short block_id, CTime *start_time):
+CBlock::CBlock(short block_id, CTime start_time):
     m_block_id(block_id),
-    m_start_time(&start_time)
+    m_start_time(start_time)
     {
         m_end_time = getEnd(start_time);
     }
 
 
-CTime CBlock::getEnd(CTime *start_time) {
-    int hours, minutes, seconds = &start_time.get_minutes();
+CTime CBlock::getEnd(CTime start_time) {
+    int hours, minutes, seconds = start_time.get_time();
     hours++;
 
     if (minutes > 30) {
         minutes = 90 - minutes;
         hours++;
-    };
+    }
     else {
         minutes = minutes + 30;
     }
@@ -33,5 +33,6 @@ short CBlock::getBlockNr() {
 
 
 void CBlock::print() {
-    std::cout << "(" << m_start_time.m_hours << ":" << m_start_time.m_minutes << " - "  << m_end_time.m_hours << ":" << m_end_time.m_minutes << ")";
+    short hours, minutes, seconds = m_start_time.get_time();
+    std::cout << "(" << hours << ":" << minutes << " - "  << hours << ":" << minutes << ")";
 }

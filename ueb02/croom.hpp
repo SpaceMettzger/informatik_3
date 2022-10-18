@@ -4,7 +4,7 @@
 class CRoom {
 
 public:
-    CRoom(char, char, short);
+    CRoom(char const*, char const*, short);
     void print();
 
 private:
