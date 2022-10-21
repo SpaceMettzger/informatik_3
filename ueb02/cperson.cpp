@@ -2,18 +2,20 @@
 #include "caddress.hpp"
 #include "cdate.hpp"
 #include <iostream>
+#include <iomanip>
 
 
-CPerson::CPerson(char const *name, char const *street, char const *number, short zip, char const *city, short year, short month, short day):
-    m_name(*name),
-    m_address(street, number, zip, city),
-    m_birth_date(year, month, day)
-    {}
+//CPerson::CPerson(char* name, char* street, char* number, short zip, char* city, short day, short month, short year);
 
 void CPerson::print() {
-    short year, month, day = m_birth_date.get_date();
-    std::cout << m_name << "(*" << year << "." << month << "." << day  << ")";
-}
+    short year = m_birth_date.get_year();
+    short month = m_birth_date.get_month();
+    short day = m_birth_date.get_day();
+    char fl;
+    fl = std::cout.fill('0');
+    std::cout << m_name << " (*" << std::setw(2) << day << "." << std::setw(2) << month << "." << std::setw(4) << year  << ")";
+    std::cout.fill(fl);
+    }
 
 CAddress CPerson::getAddress() {
     return m_address;

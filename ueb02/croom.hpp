@@ -4,11 +4,12 @@
 class CRoom {
 
 public:
-    CRoom(char const*, char const*, short);
+    CRoom(const char*, const char*, short);
     void print();
 
 private:
-    char m_name, m_building;
+    const char* m_name;
+    const char* m_building;
     short m_seats;
 };
 

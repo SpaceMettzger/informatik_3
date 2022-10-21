@@ -1,6 +1,7 @@
 #include "cblock.hpp"
 #include "ctime.hpp"
 #include <iostream>
+#include <iomanip>
 
 
 CBlock::CBlock(short block_id, CTime start_time):
@@ -12,10 +13,16 @@ CBlock::CBlock(short block_id, CTime start_time):
 
 
 CTime CBlock::getEnd(CTime start_time) {
-    int hours, minutes, seconds = start_time.get_time();
+    int hours = start_time.get_hours();
+    int minutes = start_time.get_minutes();
+    int seconds = start_time.get_seconds();
     hours++;
 
-    if (minutes > 30) {
+    if (minutes == 30) {
+        hours += 2;
+        minutes = 0;
+    }
+    else if (minutes > 30) {
         minutes = 90 - minutes;
         hours++;
     }
@@ -33,6 +40,12 @@ short CBlock::getBlockNr() {
 
 
 void CBlock::print() {
-    short hours, minutes, seconds = m_start_time.get_time();
-    std::cout << "(" << hours << ":" << minutes << " - "  << hours << ":" << minutes << ")";
+    char fl;
+    fl = std::cout.fill('0');
+    short hours = m_start_time.get_hours();
+    short minutes = m_start_time.get_minutes();
+    short end_hours = m_end_time.get_hours();
+    short end_minutes = m_end_time.get_minutes();
+    std::cout << std::setw(2) << hours << ":" << std::setw(2) << minutes << " - "  << std::setw(2) << end_hours << ":" << std::setw(2) << end_minutes;
+    std::cout.fill(fl);
 }

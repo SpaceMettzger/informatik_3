@@ -25,6 +25,14 @@ void CDate::print() {
     std::cout.fill(fl);
 }
 
-short CDate::get_date() {
-    return m_year, m_month, m_day;
+short CDate::get_year() {
+    return m_year;
+}
+
+short CDate::get_month() {
+    return m_month;
+}
+
+short CDate::get_day() {
+    return m_day;
 }

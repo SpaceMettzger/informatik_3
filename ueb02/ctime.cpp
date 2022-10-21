@@ -18,9 +18,19 @@ CTime::CTime(short hours, short minutes, short seconds):
     m_seconds(seconds)
     {}
 
-int CTime::get_time() {
-    return m_hours, m_minutes, m_seconds;
+int CTime::get_hours() {
+    return m_hours;
 }
+
+int CTime::get_minutes() {
+    return m_minutes;
+}
+
+
+int CTime::get_seconds() {
+    return m_seconds;
+}
+
 
 void CTime::print() {
     char fl;

@@ -4,14 +4,14 @@
 class CAddress {
 
 public:
-    CAddress(char const *, char const *, int, char const *);
+    CAddress(const char*, const char*, int, const char*);
     void print();
 
 private:
-    char m_street;
-    char m_number;
+    const char* m_street;
+    const char* m_number;
     int m_zip;
-    char m_city;
+    const char* m_city;
 
 };
 

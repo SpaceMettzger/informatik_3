@@ -127,3 +127,89 @@ int main() {
 
     return 0;
 }
+
+class Zahl {
+    private:
+    int value;
+    static int Anz;
+
+    public:
+    Zahl();
+    Zahl(int v);
+    ~Zahl();
+    int get();
+    int get() const;
+    void print() {printf("%i", value);}
+    static int getAnz() {return Anz;}
+    void set(int value)
+    friend int xyz(Zahl, &Z)
+}
+
+Zahl::Zahl() {
+    this->value = 0;
+    Anz++;
+}
+
+Zahl::Zahl(int v):
+    value()
+    {
+    // value = v;
+    Anz++;
+    }
+
+Zahl::~Zahl() {
+    Anz--;
+    printf("Zahl %i vernichten \n", value);
+
+}
+
+int Zahl::Anz = 0;
+
+void Zahl::set(int value) {
+    this->value = value;
+}
+
+int Zahl::get() {
+    return value;
+}
+
+int Zahl::get() const {
+    return value;
+}
+
+int xyz(Zahl, &Z) {
+    Z.print();
+    Z.value = 0;
+}
+
+int main {
+    Zahl Z1, Z2(5);
+    printf("%i\n", Z1.get());
+    Z2.print();
+    printf("\n");
+    printf("Anz: %i\n", Z1.getAnz());
+    printf("Anz: %i\n", Zahl::getAnz());
+    const int a = Z1.get();
+    int b = Z2.get();
+
+    xyz(Z1);
+}
+
+class A {
+    int a;
+    public:
+    A(int a):
+        a(a) {}
+    void set(int b) {a=b};
+}
+
+class B {
+    A AObj;
+    
+    public:
+    B(int x):
+        AObj(x)
+        {
+            //AObj.set(x)
+        }
+}

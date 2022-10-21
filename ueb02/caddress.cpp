@@ -1,11 +1,7 @@
 #include "caddress.hpp"
 #include <iostream>
 
-CAddress::CAddress(char const *street, char const *house_number, int post_code, char const *city):
-    m_street(*street),
-    m_number(*house_number),
-    m_zip(post_code),
-    m_city(*city)
+CAddress::CAddress(const char* street, const char* house_number, int post_code, const char* city)
     {}
 
 void CAddress::print() {
