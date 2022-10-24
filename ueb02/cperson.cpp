@@ -5,7 +5,11 @@
 #include <iomanip>
 
 
-//CPerson::CPerson(char* name, char* street, char* number, short zip, char* city, short day, short month, short year);
+CPerson::CPerson(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year):
+        m_name(name),
+        m_address(street, number, zip, city),
+        m_birth_date(day, month, year)
+        {}
 
 void CPerson::print() {
     short year = m_birth_date.get_year();
@@ -17,6 +21,6 @@ void CPerson::print() {
     std::cout.fill(fl);
     }
 
-CAddress CPerson::getAddress() {
+CAddress& CPerson::getAddress() {
     return m_address;
 }
