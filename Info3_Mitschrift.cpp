@@ -213,3 +213,81 @@ class B {
             //AObj.set(x)
         }
 }
+
+//--------------------------------------------------------------------------------------------------------------
+// 7. Datentypen in C++
+
+//string    c-string
+//string    char[]
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+//string s = "Hallo";  //<- so in c
+string s("Hallo");   //<- so in c++)
+s += ", Welt";
+s.size(); 
+
+int main() {
+    string s("Objekt");
+    cout << s << endl;
+    printf("%s\n" ,s.c_str());
+}
+
+#include <vector>
+using namespace std;
+
+vector<char> A;
+A.size();
+A.push_back('a');
+A[0];
+A.at(0);
+A[0] = 'c';
+char &r = A.at(0);
+r = 'c';
+A.pop_back();
+
+//     c                        c++
+// char c = (char) 3.5;     char c = char(3.5);
+//                          CPerson P = CPerson("Egon");
+
+//---------------------------------------------------------------------------------------------------------------------------
+//3. Veerbung
+
+class B {
+    protected:
+    int value;
+    public:
+    B(int v = 0): value(v) {}
+    ~B() {cout << "B-Dest." << endl;}
+};
+
+//Die Klasse C erbt von der Klasse B 
+
+class C:public B {
+    bool w;
+    public:
+    C(bool w): w(w){}
+    C(bool w, int v): B(v), w(w) {};   //<- Die Reihnefolge der Initialisierung ist wichtig. Erst vererbte Klassen, dann private Eigenschaften 
+    ~C() {cout << "C-Dest." << endl;}
+};
+
+C Cobj(true);
+
+// Die Abgeleitete Klasse ist die Klasse, die erbt.
+
+//-----------Ableitung:
+//          |   public     |  protected   |   private 
+//in klasse:|----------------------------------------
+// public   |   public     |  protected   |   private
+// protected|  protected   |  protected   |   private
+// private  | kein Zugriff | kein Zugriff | kein ZUgriff
+
+// Vergleich Klassen - Datenstrukturen
+// class c {        struct s {
+//  private:         private:       // Wenn kein Zugriffsattribut mitgegeben wird, wird 
+//   ...              ...           // bei Klassen private vererbt, bei structs wird public 
+//  public:          public:        // vererbt
+//   ...              ...
+//};                }

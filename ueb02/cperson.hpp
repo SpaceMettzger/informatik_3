@@ -12,6 +12,7 @@ public:
     CAddress& getAddress();
 
 private:
+    unsigned int m_id;
     const char* m_name;
     CAddress m_address;
     CDate m_birth_date;
