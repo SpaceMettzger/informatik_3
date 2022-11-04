@@ -291,3 +291,49 @@ C Cobj(true);
 //  public:          public:        // vererbt
 //   ...              ...
 //};                }
+
+
+class A {
+    int value;
+
+    public:
+    A(int v): value(v) {}
+    ~A() {printf("~A\n");}
+    //int get() {return value;}
+    virtual int get() {return value;}
+};
+
+class B: public A {
+
+    int nr;
+
+    public:
+    B(int nr): A(0), nr(nr) {}
+    ~B() {printf("~B");}
+    int get() {return nr;}
+};
+
+int main() {
+    A a(3);
+    B b(1);
+    cout << a.get();    // -> 3
+    cout << b.get();    // -> 0
+    // falls get() in B ebenfalls defniert ist kann man die get-Methode der Klasse A folgendermaßen aufrufen:
+    cout << b.A::get();
+
+}
+
+// Zeiger auf Objekte:
+A a (3);
+A *ap = &a;
+
+cout << ap->get();  // "->" wird nur für Zeiger verwendet. Sonst würde man den "."-operator benutzen
+
+B b(1);
+B *bp = &b;
+
+ap = &b;        // Der Zeiger ap ist eigentlich vom Typ A, zeigt aber trotzdem auf ein Objekt der Klasse B
+ap->get();      // zeigt jetzt auf Onjekt der Klasse B, ruft aber die get-Funktion der Klasse A auf, da der Zeiger als Zeiger auf ein Objekt der Klasse A definiert wurde
+ap->get();      // wenn die get-Funktion der Klasse A als virtual Funktion definiert wurde, würde zur Laufzeit ausgewertet werden auf was für eine Klasse der zeiger zeigt, und die Funktion der entsprechenden Klasse ausführen
+
+bp = &a;        // <- geht nicht, da der Zeiger der Klasse B alle eigenschaften der Klasse B erwartet. andersherum geht es, da die Klasse B alle eingenschaften der Klasse A enthält. 

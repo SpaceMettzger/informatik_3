@@ -10,5 +10,5 @@ CAddress::CAddress(const char* street, const char* house_number, unsigned int po
 
 void CAddress::print() {
     std::cout << m_street << " " << m_number << std::endl;
-    std::cout << m_zip << " " << m_city << std::endl;
+    std::cout << m_zip << " " << m_city;
 }
