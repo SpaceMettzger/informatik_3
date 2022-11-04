@@ -3,3 +3,17 @@ ueb01/ueb01.layout
 ueb01/obj/Debug/cdate.o
 ueb01/obj/Debug/ctime.o
 ueb01/obj/Debug/ueb01.o
+ueb03/ueb03.layout
+ueb03/obj/Debug/cblock.o
+ueb03/obj/Debug/cdate.o
+ueb03/obj/Debug/cevent.o
+ueb03/obj/Debug/cperson.o
+ueb03/obj/Debug/croom.o
+ueb03/obj/Debug/caddress.o
+ueb03/obj/Debug/main.o
+ueb03/obj/Debug/ueb03.o
+ueb03/obj/Debug/ctime.o
+ueb03/ueb03.depend
+ueb03/main.cpp
+ueb03/events.cpp
+ueb03/ueb03.cbp
