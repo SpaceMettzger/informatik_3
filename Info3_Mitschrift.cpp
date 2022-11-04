@@ -339,6 +339,7 @@ ap->get();      // wenn die get-Funktion der Klasse A als virtual Funktion defin
 bp = &a;        // <- geht nicht, da der Zeiger der Klasse B alle eigenschaften der Klasse B erwartet. andersherum geht es, da die Klasse B alle eingenschaften der Klasse A enthält. 
 
 
+
 // 5. (Datei-) Ein- und Ausgabe
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -347,3 +348,21 @@ bp = &a;        // <- geht nicht, da der Zeiger der Klasse B alle eigenschaften 
 using namespace std;
 
 cout << 3 << "Text" << endl;
+char tmp;
+tmp = cout.fill('0')    //<- wird einer variable zugeordnet, da der Rückgabewert der rsprüngliche Wert von .fill ist. Damit kann man den Wert später wieder zurücksetzen.
+cout.width(5);
+cout << 3 << endl;  //-> 00003
+cout.fill(tmp);         // Dadurch wird der .fill-Wert wieder auf den Ursprungswert zurückgesetzt. 
+
+cout.flags();           // Gibt an welche Flags gesetzt sind 
+cout.flags(ios::hex);   // Setzt Flag für Hexadezimalzahlen. Wird dauerhaft gesetzt. 
+cout.flags(ios::dec);   // Setzt Flag für Dezimalzahlen. 
+                        // Beides ungünstig, da dadurch die Bits für andere Flags überschrieben werden.
+long f = count.flags();
+
+cout.setf(ios::dec);
+cout.setf(ios::basefield, ios::dec);
+
+#include <iomanip>
+
+cout << setfill('0') << setw(5) << hex << 65 << endl;       // -> gibt die Zahl 65 in hexadezimal aus mit führenden Nullen mit einer Breite von 5 
