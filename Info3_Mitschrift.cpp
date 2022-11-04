@@ -337,3 +337,13 @@ ap->get();      // zeigt jetzt auf Onjekt der Klasse B, ruft aber die get-Funkti
 ap->get();      // wenn die get-Funktion der Klasse A als virtual Funktion definiert wurde, würde zur Laufzeit ausgewertet werden auf was für eine Klasse der zeiger zeigt, und die Funktion der entsprechenden Klasse ausführen
 
 bp = &a;        // <- geht nicht, da der Zeiger der Klasse B alle eigenschaften der Klasse B erwartet. andersherum geht es, da die Klasse B alle eingenschaften der Klasse A enthält. 
+
+
+// 5. (Datei-) Ein- und Ausgabe
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+cout << 3 << "Text" << endl;
