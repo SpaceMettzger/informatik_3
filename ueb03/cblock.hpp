@@ -7,14 +7,13 @@ class CBlock {
 
 public:
     CBlock(short, CTime);
-    CTime getEnd();
     short getBlockNr();
     void print();
-    CTime m_start_time, m_end_time;
 
 private:
     short m_block_id;
-
+    CTime m_start_time, m_end_time;
+    CTime getEnd(CTime);
 };
 
 
