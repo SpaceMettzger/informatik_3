@@ -300,8 +300,8 @@ class A {
     A(int v): value(v) {}
     ~A() {printf("~A\n");}
     //int get() {return value;}
-    virtual int get() {return value;}
-};
+    virtual int get() {return value;}   // virtual int get() = 0;   -> rein virtuelle Methode. Sorgt dafür dass man kein Objekt dieser Klasse mehr erstellen kann. 
+};                                      //                              Man muss die Klasse vererben damit man sie nutzen kann, und die erbenden Klassen müssen die Methode definieren.
 
 class B: public A {
 
