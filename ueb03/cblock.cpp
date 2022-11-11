@@ -49,3 +49,11 @@ void CBlock::print() {
     std::cout << std::setw(2) << hours << ":" << std::setw(2) << minutes << " - "  << std::setw(2) << end_hours << ":" << std::setw(2) << end_minutes;
     std::cout.fill(fl);
 }
+
+CTime CBlock::get_start_time() {
+    return m_start_time;
+}
+
+CTime CBlock::get_end_time() {
+    return m_end_time;
+}

@@ -1,6 +1,6 @@
 #include "croom.hpp"
 #include <iostream>
-
+#include <string>
 
 CRoom::CRoom(const char* name, const char* building, short seats):
     m_name(name),
@@ -11,3 +11,9 @@ CRoom::CRoom(const char* name, const char* building, short seats):
 void CRoom::print() {
     std::cout << m_name << " (" << m_building << ")";
 }
+
+std::string CRoom::get_building() {
+    return m_name;
+}
+
+

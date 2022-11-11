@@ -54,7 +54,7 @@ int main()
    CEvent Event7("Englisch                ", &Dozent3, &D419, &Block5, Mi, 1);
    CEvent Event8("SU Systemprogrammierung ", &Dozent4, &D117, &Block3, Di, 1);
    CEvent Event9("Ueb Systemprogrammierung", &Dozent4, &D114, &Block4, Di, 1);
-    /*
+
    CEvents Veranstaltungen;
 
    Veranstaltungen.addEvent(&Event1);
@@ -66,8 +66,8 @@ int main()
    Veranstaltungen.addEvent(&Event7);
    Veranstaltungen.addEvent(&Event8);
    Veranstaltungen.addEvent(&Event9);
-    */
-   //Veranstaltungen.print();
+
+   Veranstaltungen.print();
    cout << endl;
 
    return 0;

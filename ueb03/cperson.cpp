@@ -3,6 +3,7 @@
 #include "cdate.hpp"
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 
 CPerson::CPerson(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year):
@@ -23,4 +24,8 @@ void CPerson::print() {
 
 CAddress& CPerson::getAddress() {
     return m_address;
+}
+
+std::string CPerson::get_name() {
+    return m_name;
 }

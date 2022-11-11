@@ -9,6 +9,8 @@ public:
     CBlock(short, CTime);
     short getBlockNr();
     void print();
+    CTime get_start_time();
+    CTime get_end_time();
 
 private:
     short m_block_id;

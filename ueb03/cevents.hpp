@@ -12,9 +12,8 @@ class CEvents {
 
 
     private:
-    vector <CEvent*> m_events;
-
-}
+    std::vector <CEvent*> m_events;
+};
 
 
 #endif

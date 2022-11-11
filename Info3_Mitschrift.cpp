@@ -366,3 +366,93 @@ cout.setf(ios::basefield, ios::dec);
 #include <iomanip>
 
 cout << setfill('0') << setw(5) << hex << 65 << endl;       // -> gibt die Zahl 65 in hexadezimal aus mit führenden Nullen mit einer Breite von 5 
+
+
+// Nutzereingabe
+
+int i; char T[21];
+
+cin >> i;
+cin.ignore(100, '\n');
+char c = cin.peek();
+char d = cin.get();
+cin.putback(d);
+cin.getline(T, 20, '\n');
+
+#include <fstream>
+
+using namespace std;
+
+ifstream input;
+ofstream output;
+fstream inoutput;
+
+input.open("text.txt", ios::in | ios::binary);
+if (input) {
+    input.close();
+}
+
+
+// 8. Dynamische Speicherverwaltung
+// --------------------------------------------------------------------------------------------------------------------------------------------------
+
+// new 
+int* Zahlen = new int[10];
+if (Zahlen) {
+    *Zahlen = 0;
+    Zahlen[0] = 0;
+    delete [] Zahlen;
+}
+
+class CRoom {
+
+};
+
+cRoom *Neu = new cRoom("D113", 28);
+if (Neu) {
+    Neu.load(Datenstrom);
+}
+
+// 6. Namensräume
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+using namespace std;    //using-Direktive
+
+std::cout << //...      //qualifizierter Namensraum-Name
+
+using std::cout;        // using-Deklaration
+using std::cin; 
+
+using namespace MyNS;
+using MyNS::a;
+MyNS::a = 0;
+a = 0;
+::a = 1;
+using ::a;
+
+namespace A{
+    int i;
+    namespace B {
+        int i;
+    }
+}
+
+int main() {
+    int i;
+    i = 0;
+    A::i = 0;
+    A::B::i = 0;
+}
+
+namespace {         // Namensloser Namensraum (macht keinen Sinn)
+    int i;
+    namespace A {
+        int i;
+    }
+}
+
+int main() {
+    i = 0;      // bereits im namenslosen Namensraum deklariert
+    using namespace A;
+    ::i = 0;
+}
