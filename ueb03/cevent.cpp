@@ -23,37 +23,32 @@ void CEvent::print() {
     using std::setw;
     string day;
     switch(m_weekday){
-        case 1:
+        case Mo:
             day = "Montag";
             break;
-        case 2:
+        case Di:
             day = "Dienstag";
             break;
-        case 3:
+        case Mi:
             day = "Mittwoch";
             break;
-        case 4:
+        case Do:
             day = "Donnerstag";
             break;
-        case 5:
+        case Fr:
             day = "Freitag";
             break;
-        case 6:
+        case Sa:
             day = "Samstag";
             break;
-        case 7:
+        case So:
             day = "Sonntag";
             break;
     }
-    short block_start_hours = m_block->get_start_time().get_hours();
-    short block_start_minutes = m_block->get_start_time().get_minutes();
-    short block_end_hours = m_block->get_end_time().get_hours();
-    short block_end_minutes = m_block->get_end_time().get_minutes();
     char tmp;
     cout << std::left << setw(12) << day;
-    tmp = cout.fill('0');
-    cout << std::right << setw(2) << block_start_hours << ":" << setw(2) << block_start_minutes << " - " << setw(2) << block_end_hours << ":" << setw(2) << block_end_minutes;
-    cout.fill(tmp);
-    cout << "   " << setw(12) << m_name << "  " << m_teacher->get_name() << "  " << m_room->get_building() << std::endl;
+    cout << std::right;
+    m_block->print();
+    cout << "   " << setw(12) << m_name << "  " << m_teacher->get_name() << "  " << m_room->get_building();
     //m_block->print()
 }

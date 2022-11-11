@@ -15,5 +15,6 @@ void CEvents::print() {
         std::cout << counter << ":  ";
         counter ++;
         event->print();
+        std::cout << std::endl;
     }
 }
