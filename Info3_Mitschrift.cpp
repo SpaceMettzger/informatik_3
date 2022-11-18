@@ -456,3 +456,22 @@ int main() {
     using namespace A;
     ::i = 0;
 }
+
+namespace NS1
+{
+    void fkt() {}
+}
+namespace NS2
+{
+    void fkt() {}
+}
+
+int main() 
+{
+    NS1::fkt();
+    NS2::fkt();
+
+    using namespace NS1;
+    using namespace NS2;
+    // fkt();       --> geht nicht, da unklar ist, aus welchem Namsepace die Funktion kommt.
+}
