@@ -15,7 +15,7 @@ public:
     CDate& get_date();
 
 private:
-    static unsigned int id;
+    inline static unsigned int id = 0;
     unsigned int m_id;
     const char* m_name;
     CAddress m_address;

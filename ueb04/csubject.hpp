@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-class CSubject 
+class CSubject
 {
     std::string m_subject_name;
     int m_number;
@@ -15,7 +15,7 @@ class CSubject
 
     public:
     CSubject(std::string subject_name, int number, CStudy* study_name);
-    void add_event(CEvent* event);
+    void addEvent(CEvent* event);
     void print();
 };
 

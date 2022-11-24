@@ -8,18 +8,17 @@
 
 class CBooking
 {
-    static unsigned int booking_nr;
+    inline static unsigned int booking_nr = 0;
     unsigned int m_booking_nr;
     CSubject* m_subject;
     CStudent* m_student;
     CDate m_booking_date;
-    CTime m_booking_time; 
+    CTime m_booking_time;
 
     public:
-    CBooking(unsigned int booking_nr, CSubject* subject, CStudent* student, CDate booking_date, CTime booking_time);
+    CBooking(CSubject* subject, CStudent* student, int booking_day, int booking_month, int booking_year, int booking_hour, int booking_minute, int booking_seconds);
     void print();
 };
-
 
 
 #endif
