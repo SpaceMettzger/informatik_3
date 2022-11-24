@@ -12,8 +12,10 @@ public:
     void print();
     CAddress& getAddress();
     std::string get_name();
+    CDate& get_date();
 
 private:
+    static unsigned int id;
     unsigned int m_id;
     const char* m_name;
     CAddress m_address;

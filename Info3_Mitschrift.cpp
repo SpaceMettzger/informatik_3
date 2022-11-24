@@ -475,3 +475,123 @@ int main()
     using namespace NS2;
     // fkt();       --> geht nicht, da unklar ist, aus welchem Namsepace die Funktion kommt.
 }
+
+using namespace std;
+
+int max(int a, int b)
+{ return (a>b) ? a : b; }
+
+int main() 
+{
+    std::max(1,2);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
+//4. Mehrfachvererbung
+
+class A 
+{...};
+
+class B
+{...};
+
+class C: public A, public B
+{...};
+
+class D: public A, public A //  -> geht nicht, da die gleiche Klasse nicht zwei mal geerbt werden kann.
+{...};
+
+//---------------------------
+
+class A
+{...};                                          //      AA                           A
+                                                //     /  \                         / \
+class B: public A                               //    B    C  <-Diamantvererbung   B---D  <- Dreiecksvererbung
+{...};                                          //     \  /
+                                                //       D
+class C: public A
+{...};
+
+class D: public B, public C //   -> hier gehts, da nicht zwei mal direkt von A geerbt wird. 
+{...};                      //      Eigenschaften von A sind 2 mal vorhanden
+
+//----------------------------
+
+class A
+{...};                                          //      A
+                                                //     / \                    
+class B: public A                               //    B   C  <-Diamantvererbung  
+{...};                                          //     \ /
+                                                //      D
+class B: virtual public A
+{...};
+
+class C: virtual public A
+{...};
+
+class D: public B, public C //      Eigenschaften von A nur einmal
+{...};
+
+//-------------------------------------------------------------------
+
+A::A()
+{ cout << "A"; }
+
+B::B():
+A()
+{ cout << "B"; }
+
+C::C():
+A()
+{ cout << "C"; }
+
+D::D():
+B(), C()
+{ cout << "D"; }
+
+//------------------------------------------------------------------
+
+A::A()
+{ cout << "A"; }
+
+B::B():
+A()
+{ cout << "B"; }
+
+C::C():
+A()
+{ cout << "C"; }
+
+D::D():
+A(), B(), C()
+{ cout << "D"; }
+
+
+// Für die Übung: Beim Anlegen des Tutors wird die Person virtuell an den studenten und den dozenten vererbt. Die Person muss dann im Tutor nochmal initialisiert werden
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------
+// 9. Polymorphismus
+
+vector <CPerson*> Personen;
+Personen.push_back(new CStudent);
+Personen.push_back(new CTeacher);
+Personen.push_back(new CTutor);
+
+for (unsigned i=0; i<Personen.size(); i++)
+    Personen[i]->print();
+
+
+//-----------------------
+// rein virtuelle Methoden
+class CPerson 
+{
+    public:
+    virtual void print() = 0;
+}
+
+// Nur bestimmte Personengruppen ausgeben:
+for (unsigned i=0; i<Personen.size(); i++) {
+    if (dynamic_cast <CStudent*> (Person[i]) != NULL)
+    {cout << "Personen[i] zeigt auf Studenten"}
+    Personen[i]->print();
+    }
