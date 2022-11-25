@@ -21,7 +21,7 @@ CDate::CDate(short day, short month, short year):
 void CDate::print() {
     char fl;
     fl = std::cout.fill('0');
-    std::cout << std::setw(2) << m_day << ":" << std::setw(2) << m_month << ":" << std::setw(2) << m_year;
+    std::cout << std::setw(2) << m_day << "." << std::setw(2) << m_month << "." << std::setw(2) << m_year;
     std::cout.fill(fl);
 }
 
