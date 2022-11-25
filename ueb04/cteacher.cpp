@@ -6,7 +6,12 @@ CTeacher::CTeacher(const char* name, const char* street, const char* number, sho
     m_pers_nr(pers_nr)
     {};
 
-void CTeacher::print() 
+CTeacher::~CTeacher()
+{
+    std::cout << "Lehrer*in " << get_name() << " wird vernichtet" << std::endl;
+}
+
+void CTeacher::print()
 {
     std::cout << get_name() << " (" << m_pers_nr << ")";
 };

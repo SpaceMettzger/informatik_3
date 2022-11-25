@@ -15,6 +15,7 @@ class CSubject
 
     public:
     CSubject(std::string subject_name, int number, CStudy* study_name);
+    ~CSubject();
     void addEvent(CEvent* event);
     void print();
 };

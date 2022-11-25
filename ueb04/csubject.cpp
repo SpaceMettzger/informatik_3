@@ -12,6 +12,11 @@ void CSubject::addEvent(CEvent* event)
     m_events.push_back(event);
 }
 
+CSubject::~CSubject()
+{
+    std::cout << "Studienfach Nr. " << m_subject_name << " wird vernichtet" << std::endl;
+}
+
 void CSubject::print()
 {
     std::cout << "'" << m_subject_name << " (" << m_number << "; ";

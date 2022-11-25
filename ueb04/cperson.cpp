@@ -15,7 +15,12 @@ CPerson::CPerson(const char* name, const char* street, const char* number, short
             m_id = id;
         }
 
-void CPerson::print() 
+CPerson::~CPerson()
+{
+    std::cout << "Person " << m_name << " wird vernichtet" << std::endl;
+}
+
+void CPerson::print()
 {
     short year = m_birth_date.get_year();
     short month = m_birth_date.get_month();
@@ -26,17 +31,17 @@ void CPerson::print()
     std::cout.fill(fl);
 }
 
-CAddress& CPerson::getAddress() 
+CAddress& CPerson::getAddress()
 {
     return m_address;
 }
 
-std::string CPerson::get_name() 
+std::string CPerson::get_name()
 {
     return m_name;
 }
 
-CDate& CPerson::get_date() 
+CDate& CPerson::get_date()
 {
     return m_birth_date;
 }

@@ -11,6 +11,11 @@ CBooking::CBooking(CSubject* subject, CStudent* student, int booking_day, int bo
     this->m_booking_nr = booking_nr;
     }
 
+CBooking::~CBooking()
+{
+    std::cout << "Belegung Nr. " << m_booking_nr << " wird vernichtet" << std::endl;
+}
+
 void CBooking::print()
 {
     std::cout << "Belegung Nr. " << m_booking_nr << ":" << std::endl;

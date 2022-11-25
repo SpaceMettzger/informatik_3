@@ -9,6 +9,7 @@ class CPerson {
 
 public:
     CPerson(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year);
+    ~CPerson();
     void print();
     CAddress& getAddress();
     std::string get_name();

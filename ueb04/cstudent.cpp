@@ -13,6 +13,11 @@ CStudent::CStudent(const char* name, const char* street, const char* number, sho
         m_study(study)
         {}
 
+CStudent::~CStudent()
+{
+    std::cout << "Student " << get_name() << " wird vernichtet" << std::endl;
+}
+
 void CStudent::print()
 {
         std::cout << get_name() << " (*";

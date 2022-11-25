@@ -103,7 +103,7 @@ int main()
       cout << endl << endl;
    }
    cout << endl;
-    /*
+
    // Speicherbereiche freigeben
    for (i = 0; i < Belegungen.size(); i++)
       delete Belegungen[i];
@@ -133,6 +133,6 @@ int main()
    delete Zeit0800;     delete Zeit1000;     delete Zeit1215;
    delete Zeit1415;     delete Zeit1600;     delete Zeit1745;
    delete Zeit1930;
-    */
+
    return 0;
 }
