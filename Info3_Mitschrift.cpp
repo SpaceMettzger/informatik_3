@@ -587,11 +587,192 @@ class CPerson
 {
     public:
     virtual void print() = 0;
-}
+};
 
 // Nur bestimmte Personengruppen ausgeben:
 for (unsigned i=0; i<Personen.size(); i++) {
     if (dynamic_cast <CStudent*> (Person[i]) != NULL)
     {cout << "Personen[i] zeigt auf Studenten"}
     Personen[i]->print();
+    };
+
+//-------------------------------------------------------------------
+//Überladen von Operatoren
+
+// a + b;
+//interne geschieht folgendes:
+//a.operator+(b);
+//operator+(a,b);
+
+class A
+{   
+    protected:
+    int value;
+
+    public:
+    A(int v):value(v){}
+    friend A operator+(A a, A b);
+    A operator-(A b);
+    friend ostream& operator<<(ostream &ostr, A &a);
+    virtual ostream& print(ostream&);
+    A operator++();
+    A operator++(int);
+    operator int ();
+};
+
+A::operator+(A a, A b) 
+{
+    A c(a.value + b.value);
+    return c;
+}
+
+ostream& operator<<(ostream& ostr, A& a)
+{
+    return a.print(ostr);
+}
+
+A::operator-(A b)
+{
+    A c(this->value - b.value);
+}
+
+ostream& A::print(ostream& ostr) 
+{
+    ostr <<< value;
+    return ostr;
+}
+
+A A::operator ++ ()
+{
+    this->value + 1;
+    return *this;
+}
+
+A A::operator++(int)
+{
+    A k(this->value);
+    this->value++;
+    return k;
+}
+
+A::operator int()
+{
+    return value;
+}
+
+
+
+class B: public A 
+{
+    int index;
+
+    public:
+    B(int i): A(i), index(i) {}
+    friend ostream& operator<<(ostream&, B&);
+    ostream &print(ostream& ostr)
+    {
+        ostr << value << "/" << index;
+        return ostr;
+    };
+}
+
+ostream& operator<<(ostream& ostr, B& b) 
+{
+    //ostr << b.value << "/" << b.index;
+    //return ostr;
+    return b.print(ostr);
+}
+
+int main()
+{
+    A x(1), y(3), z(0);
+    z = x + y;
+    z = operator+(x, y);
+    z = x - y;
+    z = x.operator - (y);
+    std::cout << x << "/" << y << endl;
+    A* m = new B(1);
+    cout << *m << endl;
+    B n(1);
+    cout << n << endl;
+    z = x++;
+    z = ++y;
+
+    int f = 3 + x;
+    int l = 5 + int(y);
+
+    A v(0);
+    v = 3 + x; // geht nicht
+    v = A(3 + x);
+}
+
+class K 
+{
+    protected:
+    char* Name;
+    
+    public:
+    K(): Name(new char[1]) {*Name = '\o'}
+    K(char* N)
+    {
+        Name = new char[strlen(N) + 1];
+        if (Name) {
+            strcpy(Name, N);
+        }
     }
+    K(string s):
+        Name(new char[s.size()+1])
+        {
+            if (Name) 
+            strcpy (Name, s.c_str());   
+        }
+    ~K() {delete[] Name;}
+    K(K& k) 
+    {
+        this-> Name = new char[strlen(k.Name) + 1];
+    }
+    friend isotream& operator<<(iostream& ostr, K& k)
+    {
+        if (k.Name == nullptr)
+            ostr << "unbekannt";
+        else
+            ostr << k.Name;
+        return ostr;
+    }
+    K operator=(K& k) 
+    {   
+        if (this == &k)
+            return *this;
+        if (Name)
+        {
+            delete[] Name;
+        }
+        Name = new char[strlen(k.Name) + 1];
+        if (Name)
+            strcpy(Name, k.name);
+    }
+    explicit K operator=(string s) 
+    {
+        if (Name)
+            delete[] Name;
+        Name = new char[s.size()+1];
+        if (Name)
+            strcpy(Name, s.c_str());
+        return *this;
+    }
+}
+
+int main()
+{
+    K k, l("Max");
+    cout << k << endl;
+    cout << l yy endl;
+    K m(l);
+    m = l;
+    K n = l;
+    string s("Egon");
+    K o(s);
+    K p;
+    p = s;
+    m = m;
+}
