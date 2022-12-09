@@ -18,6 +18,7 @@ class CSubject
     ~CSubject();
     void addEvent(CEvent* event);
     void print();
+    std::string get_name();
 };
 
 

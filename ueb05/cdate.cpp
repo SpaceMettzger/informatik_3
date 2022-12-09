@@ -36,3 +36,10 @@ short CDate::get_month() {
 short CDate::get_day() {
     return m_day;
 }
+
+void CDate::set_date(int day, int month, int year)
+{
+    m_day = day;
+    m_month = month;
+    m_year = year;
+}

@@ -19,6 +19,7 @@ class CBooking
     CBooking(CSubject* subject, CStudent* student, int booking_day, int booking_month, int booking_year, int booking_hour, int booking_minute, int booking_seconds);
     ~CBooking();
     void print();
+    int get_booking();
 };
 
 

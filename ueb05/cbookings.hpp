@@ -21,13 +21,13 @@ class CBookings
 
     public:
     CBookings(std::string);
-    CBlock* findBlock(std::string);
-    CRoom* findRoom(std::string);
-    CStudy* findStudy(std::string);
-    CSubject* findSubject(std::string);
-    CBooking* findBooking(std::string);
-    CStudent* findStudent(std::string);
-    CTeacher* findTeacher(std::string);
+    CBlock* findBlock(int id);
+    CRoom* findRoom(std::string name);
+    CStudy* findStudy(std::string name);
+    CSubject* findSubject(std::string name);
+    CBooking* findBooking(int id);
+    CStudent* findStudent(std::string name);
+    CTeacher* findTeacher(std::string name);
 
 };
 

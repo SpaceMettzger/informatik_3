@@ -31,3 +31,8 @@ void CBooking::print()
     m_subject->print();
     std::cout << " belegt";
 }
+
+int CBooking::get_booking()
+{
+    return m_booking_nr;
+}

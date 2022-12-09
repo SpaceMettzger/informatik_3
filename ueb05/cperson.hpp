@@ -14,6 +14,9 @@ public:
     CAddress& getAddress();
     std::string get_name();
     CDate& get_date();
+    virtual void set_name(std::string);
+    void set_address(std::string, std::string, int, std::string);
+    void set_date(int, int, int);
 
 private:
     inline static unsigned int id = 0;

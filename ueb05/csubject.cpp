@@ -23,3 +23,8 @@ void CSubject::print()
     m_study_name->print();
     std::cout << ")'";
 }
+
+std::string CSubject::get_name()
+{
+    return m_subject_name;
+}

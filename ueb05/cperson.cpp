@@ -45,3 +45,18 @@ CDate& CPerson::get_date()
 {
     return m_birth_date;
 }
+
+void CPerson::set_name(std::string name) 
+{
+    m_name = name.c_str();
+}
+
+void CPerson::set_address(std::string street, std::string number, int zip, std::string city)
+{
+    m_address.set_address(street, number, zip, city);
+}
+
+void CPerson::set_date(int day, int month, int year)
+{
+    m_birth_date.set_date(day, month, year);
+}
