@@ -7,6 +7,8 @@
 #include <iostream>
 #include <iomanip>
 
+class CStudy;
+
 class CStudent: public CPerson
 {
 public:

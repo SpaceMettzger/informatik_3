@@ -4,6 +4,10 @@
 #include "ctime.hpp"
 #include "cbookings.hpp"
 
+#include <iostream>
+
+class CBookings;
+
 class CBlock {
 
 public:
@@ -13,7 +17,7 @@ public:
     void print();
     CTime get_start_time();
     CTime get_end_time();
-    void load(std::ifstream& input, CBookings& bookings);
+    void load(std::ifstream& input, CBookings&);
     int get_id();
 
 private:

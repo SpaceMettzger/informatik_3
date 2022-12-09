@@ -777,6 +777,7 @@ int main()
     m = m;
 }
 
+// Überladen des Funktionsoperators
 
 class A
 {
@@ -791,6 +792,131 @@ class A
     }
     int operator[](int x)
     {
-        
+        if ((x >= 0) && (x < 10))
+            return Z[x];
+        else
+            return 0;
+    }
+}
+
+class IZ
+{
+    struct s
+    {
+        int value;
+    }
+    s default;
+    s *StruktPtr;
+
+    public:
+    IZ(): StructPtr(nullptr) {}
+    IT(int o): StructPtr(new s)
+    {
+        if (StructPtr)
+        {
+            StructPtr->value = v;
+        }
+    }
+
+    s* operator->()
+    {
+        if (StruktPtr == nullptr)
+        {
+            StruktPtr = new s;
+            if (StruktPtr)
+            {
+                StruktPtr->value = 0;
+            }
+        }
+        return StruktPtr;
+    };
+}
+
+int main() 
+{
+    A aobj(1);
+    aobj();
+    cout << aobj[5] << endl;
+}
+
+int main()
+{
+    IZ z(5);
+    z->value = 3;
+}
+
+class T
+{
+    double *ptr;
+
+    public:
+    T() {ptr = nullptr;}
+    ~T() 
+    {
+        if (ptr)
+            delete ptr;
+    }
+    static void *operator new (int size, double d)
+    {
+        T +tptr = ::new(size);
+        tptr->ptr = new(double);
+        *(tptr->ptr) = d;
+        return (void*)tptr;
+    }
+    static void operator delete(void * z) 
+    {
+        delete ptr;
+        ptr = nullptr; // alternative zum Delete
+        delete z;
+    }
+
+    const void* operator&() const{
+        return reinterpret_cast<void*>(ptr);
+    }
+}
+
+int main() 
+{
+    T *t = nullptr;
+    t = new(3.14)T;
+    cout << &(*t) << endl;
+    cout << addressof(*t);
+    delete t;
+}
+
+
+//Literale 
+
+long l = 0l;
+long entf = 5;
+
+long operator""_km(long value)
+{
+    return value *1000;
+};
+
+entf = 7 + 3_km;    //-> 3007 m
+
+long operator ""_miles(long value)
+{
+    return value * 1852;
+};
+
+long operator ""_m(long value)
+{
+    return value;
+}
+
+entf -= 1_miles + 3_m;
+
+unsigned long long operator ""_b(const char* d)
+{
+    unsigned long long v = 0;
+    while (*d)
+    {
+        v <<= 1;
+        if (*d == '1')
+            v++;
+        d++;
     }
 }

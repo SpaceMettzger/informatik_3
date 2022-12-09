@@ -1,6 +1,8 @@
 #ifndef CAddress_HPP
 #define CAddress_HPP
 
+#include <string>
+
 class CAddress {
 
 public:

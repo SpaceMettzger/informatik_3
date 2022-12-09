@@ -5,7 +5,13 @@
 #include "cperson.hpp"
 #include "cblock.hpp"
 
+
+
 #include <string>
+
+class CBlock;
+class CRoom;
+
 
 enum CWeekday
 {
@@ -22,6 +28,7 @@ class CEvent
 {
 public:
     CEvent(std::string name, CPerson* teacher, CRoom* room, CBlock* block, CWeekday weekday, short period);
+    CEvent();
     void print();
     void set_event(std::string name, CPerson* teacher, CRoom* room, CBlock* block, CWeekday weekday, short period);
 

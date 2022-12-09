@@ -9,13 +9,14 @@ class CPerson {
 
 public:
     CPerson(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year);
+    CPerson();
     virtual ~CPerson();
     void print();
     CAddress& getAddress();
     std::string get_name();
     CDate& get_date();
-    virtual void set_name(std::string);
-    void set_address(std::string, std::string, int, std::string);
+    virtual void set_name(std::string name);
+    void set_address(std::string street, std::string number, int zip, std::string city);
     void set_date(int, int, int);
 
 private:

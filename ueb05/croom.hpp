@@ -6,6 +6,8 @@
 
 #include "cbookings.hpp"
 
+class CBookings;
+
 class CRoom {
 
 public:
@@ -13,7 +15,7 @@ public:
     CRoom();
     void print();
     std::string get_building();
-    void load(std::ifstream& input, CBookings& bookings);
+    void load(std::ifstream&, CBookings& bookings);
     std::string get_name();
 
 private:

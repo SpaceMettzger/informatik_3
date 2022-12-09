@@ -45,106 +45,107 @@ int CBooking::get_booking()
 }
 
 
-void CBooking::load(std::ifstream& input, CBookings& bookings) 
+void CBooking::load(std::ifstream& input, CBookings& bookings)
 {
     std::string line;
     std::size_t start_pos, end_pos;
     int span;
     std::string sub_string;
-    while (getline(input, line)) 
+    getline(input, line);
+    std::cout << line;
+    while (getline(input, line))
     {
-        while (not line.find("</booking>"))
+        if(line.find("<subject>"))
         {
-            if(line.find("<subject>"))
-            {
-                std::string search_string = "<subject>";
-                start_pos = line.find(search_string) + search_string.size();
-                end_pos = line.find("</subject>");
-                span = end_pos - start_pos;
-                sub_string = line.substr(start_pos, span);
-                m_subject = bookings.findSubject(sub_string);
-            }
-            if(line.find("<student>"))
-            {
-                std::string search_string = "<student>";
-                start_pos = line.find(search_string) + search_string.size();
-                end_pos = line.find("</student>");
-                span = end_pos - start_pos;
-                sub_string = line.substr(start_pos, span);
-                m_student = bookings.findStudent(sub_string);
-            } 
-            if(line.find("<bookingdate>"))
-            {
-                int day, month, year;
-                while (not line.find("</bookingdate>"))
-                {
-                    getline(input, line);
-                    if(line.find("<day>"))
-                    {
-                        std::string search_string = "<day>";
-                        start_pos = line.find(search_string) + search_string.size();
-                        end_pos = line.find("</day>");
-                        span = end_pos - start_pos;
-                        sub_string = line.substr(start_pos, span);
-                        day = stoi(sub_string);
-                    }
-                    if(line.find("<month>"))
-                    {
-                        std::string search_string = "<month>";
-                        start_pos = line.find(search_string) + search_string.size();
-                        end_pos = line.find("</month>");
-                        span = end_pos - start_pos;
-                        sub_string = line.substr(start_pos, span);
-                        month = stoi(sub_string);
-                    }
-                    if(line.find("<year>"))
-                    {
-                        std::string search_string = "<year>";
-                        start_pos = line.find(search_string) + search_string.size();
-                        end_pos = line.find("</year>");
-                        span = end_pos - start_pos;
-                        sub_string = line.substr(start_pos, span);
-                        month = stoi(sub_string);
-                    }
-                    m_booking_date.set_date(day, month, year);
-                }
-            }
-            if(line.find("<bookingtime>"))
-            {
-                short hours, minutes, seconds = 0;
-                while (not line.find("</bookingtime>"))
-                {
-                    getline(input, line);
-                    if(line.find("<hour>"))
-                    {
-                        std::string search_string = "<hour>";
-                        start_pos = line.find(search_string) + search_string.size();
-                        end_pos = line.find("</hour>");
-                        span = end_pos - start_pos;
-                        sub_string = line.substr(start_pos, span);
-                        hours = stoi(sub_string);
-                    }
-                    if(line.find("<minute>"))
-                    {
-                        std::string search_string = "<minute>";
-                        start_pos = line.find(search_string) + search_string.size();
-                        end_pos = line.find("</minute>");
-                        span = end_pos - start_pos;
-                        sub_string = line.substr(start_pos, span);
-                        minutes = stoi(sub_string);
-                    }
-                    if(line.find("<second>"))
-                    {
-                        std::string search_string = "<second>";
-                        start_pos = line.find(search_string) + search_string.size();
-                        end_pos = line.find("</second>");
-                        span = end_pos - start_pos;
-                        sub_string = line.substr(start_pos, span);
-                        seconds = stoi(sub_string);
-                    }
-                    m_booking_time.set_time(hours, minutes, seconds);
-                }
-            }                 
+            std::string search_string = "<subject>";
+            start_pos = line.find(search_string) + search_string.size();
+            end_pos = line.find("</subject>");
+            span = end_pos - start_pos;
+            sub_string = line.substr(start_pos, span);
+            m_subject = bookings.findSubject(sub_string);
         }
+        else if(line.find("<student>"))
+        {
+            std::string search_string = "<student>";
+            start_pos = line.find(search_string) + search_string.size();
+            end_pos = line.find("</student>");
+            span = end_pos - start_pos;
+            sub_string = line.substr(start_pos, span);
+            m_student = bookings.findStudent(sub_string);
+        }
+        else if(line.find("<bookingdate>"))
+        {
+            int day, month, year;
+            while (not line.find("</bookingdate>"))
+            {
+                getline(input, line);
+                if(line.find("<day>"))
+                {
+                    std::string search_string = "<day>";
+                    start_pos = line.find(search_string) + search_string.size();
+                    end_pos = line.find("</day>");
+                    span = end_pos - start_pos;
+                    sub_string = line.substr(start_pos, span);
+                    day = stoi(sub_string);
+                }
+                else if(line.find("<month>"))
+                {
+                    std::string search_string = "<month>";
+                    start_pos = line.find(search_string) + search_string.size();
+                    end_pos = line.find("</month>");
+                    span = end_pos - start_pos;
+                    sub_string = line.substr(start_pos, span);
+                    month = stoi(sub_string);
+                }
+                else if(line.find("<year>"))
+                {
+                    std::string search_string = "<year>";
+                    start_pos = line.find(search_string) + search_string.size();
+                    end_pos = line.find("</year>");
+                    span = end_pos - start_pos;
+                    sub_string = line.substr(start_pos, span);
+                    year = stoi(sub_string);
+                }
+                m_booking_date.set_date(day, month, year);
+            }
+        }
+        else if(line.find("<bookingtime>"))
+        {
+            short hours, minutes, seconds = 0;
+            while (not line.find("</bookingtime>"))
+            {
+                getline(input, line);
+                if(line.find("<hour>"))
+                {
+                    std::string search_string = "<hour>";
+                    start_pos = line.find(search_string) + search_string.size();
+                    end_pos = line.find("</hour>");
+                    span = end_pos - start_pos;
+                    sub_string = line.substr(start_pos, span);
+                    hours = stoi(sub_string);
+                }
+                else if(line.find("<minute>"))
+                {
+                    std::string search_string = "<minute>";
+                    start_pos = line.find(search_string) + search_string.size();
+                    end_pos = line.find("</minute>");
+                    span = end_pos - start_pos;
+                    sub_string = line.substr(start_pos, span);
+                    minutes = stoi(sub_string);
+                }
+                else if(line.find("<second>"))
+                {
+                    std::string search_string = "<second>";
+                    start_pos = line.find(search_string) + search_string.size();
+                    end_pos = line.find("</second>");
+                    span = end_pos - start_pos;
+                    sub_string = line.substr(start_pos, span);
+                    seconds = stoi(sub_string);
+                }
+                m_booking_time.set_time(hours, minutes, seconds);
+            }
+        }
+        if(line.find("</booking>"))
+            return;
     }
 }

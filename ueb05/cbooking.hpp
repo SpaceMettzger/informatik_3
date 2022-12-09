@@ -1,10 +1,14 @@
-#ifndef CBOOKING.HPP
-#define CBOOKING.HPP
+#ifndef CBOOKING_HPP
+#define CBOOKING_HPP
 
 #include "csubject.hpp"
 #include "cstudent.hpp"
 #include "cdate.hpp"
 #include "ctime.hpp"
+#include "cbookings.hpp"
+
+class CStudent;
+class CSubject;
 
 class CBooking
 {

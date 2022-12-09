@@ -15,6 +15,8 @@ CPerson::CPerson(const char* name, const char* street, const char* number, short
             m_id = id;
         }
 
+CPerson::CPerson() {}
+
 CPerson::~CPerson()
 {
     std::cout << "Person " << m_name << " wird vernichtet" << std::endl;
@@ -46,7 +48,7 @@ CDate& CPerson::get_date()
     return m_birth_date;
 }
 
-void CPerson::set_name(std::string name) 
+void CPerson::set_name(std::string name)
 {
     m_name = name.c_str();
 }

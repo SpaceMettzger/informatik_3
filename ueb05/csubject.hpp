@@ -6,6 +6,9 @@
 #include <string>
 #include <vector>
 
+class CEvent;
+class CStudy;
+
 class CSubject
 {
     std::string m_subject_name;
