@@ -15,10 +15,12 @@ class CSubject
 
     public:
     CSubject(std::string subject_name, int number, CStudy* study_name);
+    CSubject();
     ~CSubject();
     void addEvent(CEvent* event);
     void print();
     std::string get_name();
+    void load(std::ifstream& input, CBookings& bookings);
 };
 
 

@@ -17,9 +17,11 @@ class CBooking
 
     public:
     CBooking(CSubject* subject, CStudent* student, int booking_day, int booking_month, int booking_year, int booking_hour, int booking_minute, int booking_seconds);
+    CBooking();
     ~CBooking();
     void print();
     int get_booking();
+    void load(std::ifstream& input, CBookings& bookings);
 };
 
 

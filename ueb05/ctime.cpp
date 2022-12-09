@@ -44,3 +44,10 @@ void CTime::print() {
     std::cout.fill(fl);
 
 }
+
+void CTime::set_time(short hours, short minutes, short seconds)
+{
+    m_hours = hours;
+    m_minutes = minutes;
+    m_seconds = seconds;
+}

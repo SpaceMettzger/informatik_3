@@ -36,11 +36,23 @@ CBookings::CBookings(std::string file)
             student->load(file_input, *this);
             m_students.push_back(student);
         }
-        else if (line.find("<student>")) 
+        else if (line.find("<teacher>")) 
         {
             CTeacher* teacher = new CTeacher();
             teacher->load(file_input, *this);
             m_teachers.push_back(teacher);
+        }
+        else if (line.find("<subject>")) 
+        {
+            CSubject* subject = new CSubject();
+            subject->load(file_input, *this);
+            m_subjects.push_back(subject);
+        }
+        else if (line.find("<booking>")) 
+        {
+            CBooking* booking = new CBooking();
+            booking->load(file_input, *this);
+            m_bookings.push_back(booking);
         }
     }
 }

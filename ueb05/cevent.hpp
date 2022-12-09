@@ -23,6 +23,7 @@ class CEvent
 public:
     CEvent(std::string name, CPerson* teacher, CRoom* room, CBlock* block, CWeekday weekday, short period);
     void print();
+    void set_event(std::string name, CPerson* teacher, CRoom* room, CBlock* block, CWeekday weekday, short period);
 
 private:
     std::string m_name;

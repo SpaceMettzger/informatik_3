@@ -60,3 +60,13 @@ void CEvent::print()
     cout << "   " << setw(12) << m_name << "  "
          << m_teacher->get_name() << "  " << m_room->get_building();
 }
+
+void CEvent::set_event(std::string name, CPerson* teacher, CRoom* room, CBlock* block, CWeekday weekday, short period)
+{
+    m_name = name;
+    m_teacher = teacher;
+    m_room = room;
+    m_block = block;
+    m_weekday = weekday;
+    m_period = period; 
+}
