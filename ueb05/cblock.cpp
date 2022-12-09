@@ -75,9 +75,10 @@ void CBlock::load(std::ifstream& input, CBookings& bookings)
     {
         while (not line.find("</block>"))
         {
-            if(line.find("<blocknr>"))
+            std::string search_string = "<blocknr>";
+            if(line.find(search_string))
             {
-                start_pos = line.find("<blocknr>");
+                start_pos = line.find("search_string") + search_string.size();
                 end_pos = line.find("</blocknr>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);
@@ -86,11 +87,10 @@ void CBlock::load(std::ifstream& input, CBookings& bookings)
             else if(line.find("<begin>"))
             {
                 int start_hour, start_minute, start_second = 0;
-                // check for <hour>, <minute> and <second>, convert each to int, passt to CTime start_time, m_start_time = CTime start_time,
-                // pass start_time to get_end_time
-                if (line.find("<hour>")) 
+                std::string search_string = "<hour>";
+                if (line.find(search_string)) 
                 {
-                    start_pos = line.find("<hour>");
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</hour>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
@@ -98,7 +98,8 @@ void CBlock::load(std::ifstream& input, CBookings& bookings)
                 }
                 else if (line.find("<minute>")) 
                 {
-                    start_pos = line.find("<minute>");
+                    std::string search_string = "<minute>";
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</minute>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
@@ -106,7 +107,8 @@ void CBlock::load(std::ifstream& input, CBookings& bookings)
                 }
                 else if (line.find("<second>")) 
                 {
-                    start_pos = line.find("<second>");
+                    std::string search_string = "<second>";
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</second>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);

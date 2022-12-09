@@ -33,9 +33,10 @@ void CStudy::load(std::ifstream& input, CBookings& bookings)
     {
         while (not line.find("</study>"))
         {
-            if(line.find("<name>"))
+            std::string search_string = "<name>";
+            if(line.find(search_string))
             {
-                start_pos = line.find("<name>");
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</name>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);
@@ -43,7 +44,8 @@ void CStudy::load(std::ifstream& input, CBookings& bookings)
             }        
             else if(line.find("<nc>"))
             {
-                start_pos = line.find("<nc>");
+                std::string search_string = "<nc>";
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</nc>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);
@@ -58,7 +60,8 @@ void CStudy::load(std::ifstream& input, CBookings& bookings)
             }
             else if(line.find("<nrofterms>"))
             {
-                start_pos = line.find("<nrofterms>");
+                std::string search_string = "<nrofterms>";
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</nrofterms>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);

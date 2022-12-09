@@ -51,10 +51,11 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                 std::string city = "";
                 while (not line.find("</address>")) 
                 {
+                    std::string search_string = "<street>";
                     getline(input, line);
-                    if(line.find("<street>")) 
+                    if(line.find(search_string)) 
                     {
-                        start_pos = line.find("<street>");
+                        start_pos = line.find(search_string) + search_string.size();
                         end_pos = line.find("</street>");
                         span = end_pos - start_pos;
                         sub_string = line.substr(start_pos, span);
@@ -62,7 +63,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     }
                     if(line.find("<housenr>")) 
                     {
-                        start_pos = line.find("<housenr>");
+                        std::string search_string = "<housenr>";
+                        start_pos = line.find(search_string) + search_string.size();
                         end_pos = line.find("</housenr>");
                         span = end_pos - start_pos;
                         sub_string = line.substr(start_pos, span);
@@ -70,7 +72,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     }
                     if(line.find("<zipcode>")) 
                     {
-                        start_pos = line.find("<zipcode>");
+                        std::string search_string = "<zipcode>";
+                        start_pos = line.find(search_string) + search_string.size();
                         end_pos = line.find("</zipcode>");
                         span = end_pos - start_pos;
                         sub_string = line.substr(start_pos, span);
@@ -78,7 +81,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     }
                     if(line.find("<city>")) 
                     {
-                        start_pos = line.find("<city>");
+                        std::string search_string = "<city>";
+                        start_pos = line.find(search_string) + search_string.size();
                         end_pos = line.find("</city>");
                         span = end_pos - start_pos;
                         sub_string = line.substr(start_pos, span);
@@ -97,7 +101,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     getline(input, line);
                     if(line.find("<day>")) 
                     {
-                        start_pos = line.find("<day>");
+                        std::string search_string = "<day>";
+                        start_pos = line.find(search_string) + search_string.size();
                         end_pos = line.find("</day>");
                         span = end_pos - start_pos;
                         sub_string = line.substr(start_pos, span);
@@ -105,7 +110,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     }
                     if(line.find("<month>")) 
                     {
-                        start_pos = line.find("<month>");
+                        std::string search_string = "<month>";
+                        start_pos = line.find(search_string) + search_string.size();
                         end_pos = line.find("</month>");
                         span = end_pos - start_pos;
                         sub_string = line.substr(start_pos, span);
@@ -113,7 +119,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     }
                     if(line.find("<year>")) 
                     {
-                        start_pos = line.find("<year>");
+                        std::string search_string = "<year>";
+                        start_pos = line.find(search_string) + search_string.size();
                         end_pos = line.find("</year>");
                         span = end_pos - start_pos;
                         sub_string = line.substr(start_pos, span);
@@ -124,7 +131,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             }
             if(line.find("<matriculationnr>"))
             { 
-                start_pos = line.find("<matriculationnr>");
+                std::string search_string = "<matriculationnr>";
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</matriculationnr>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);
@@ -132,6 +140,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             }
             if(line.find("<term>"))
             { 
+                std::string search_string = "<term>";
+                start_pos = line.find(search_string) + search_string.size();
                 start_pos = line.find("<term>");
                 end_pos = line.find("</term>");
                 span = end_pos - start_pos;
@@ -140,7 +150,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             }          
             if(line.find("<credits>"))
             { 
-                start_pos = line.find("<credits>");
+                std::string search_string = "<credits>";
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</credits>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);
@@ -148,7 +159,8 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             }    
             if(line.find("<study>"))
             { 
-                start_pos = line.find("<study>");
+                std::string search_string = "<study>";
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</study>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);

@@ -33,9 +33,10 @@ void CRoom::load(std::ifstream& input, CBookings& bookings)
     {
         while (not line.find("</room>"))
         {
-            if(line.find("<name>"))
+            std::string search_string = "<name>";
+            if(line.find(search_string))
             {
-                start_pos = line.find("<name>");
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</name>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);
@@ -43,7 +44,8 @@ void CRoom::load(std::ifstream& input, CBookings& bookings)
             }        
             else if(line.find("<building>"))
             {
-                start_pos = line.find("<building>");
+                std::string search_string = "<building>";
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</building>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);
@@ -51,7 +53,8 @@ void CRoom::load(std::ifstream& input, CBookings& bookings)
             }
             else if(line.find("<seats>"))
             {
-                start_pos = line.find("<seats>");
+                std::string search_string = "<seats>";
+                start_pos = line.find(search_string) + search_string.size();
                 end_pos = line.find("</seats>");
                 span = end_pos - start_pos;
                 sub_string = line.substr(start_pos, span);
