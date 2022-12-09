@@ -776,3 +776,21 @@ int main()
     p = s;
     m = m;
 }
+
+
+class A
+{
+    int a;
+    int Z[10];
+
+    public:
+    A(int a): a(a) {}
+    void operator()() 
+    {
+        cout << a;
+    }
+    int operator[](int x)
+    {
+        
+    }
+}
