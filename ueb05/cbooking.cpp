@@ -36,7 +36,7 @@ void CBooking::print()
     std::cout << std::endl;
     std::cout << "das Fach ";
     m_subject->print();
-    std::cout << " belegt";
+    std::cout << " belegt.";
 }
 
 int CBooking::get_booking()
@@ -51,11 +51,9 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
     std::size_t start_pos, end_pos;
     int span;
     std::string sub_string;
-    getline(input, line);
-    std::cout << line;
     while (getline(input, line))
     {
-        if(line.find("<subject>"))
+        if(line.find("<subject>") != std::string::npos)
         {
             std::string search_string = "<subject>";
             start_pos = line.find(search_string) + search_string.size();
@@ -64,7 +62,7 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
             sub_string = line.substr(start_pos, span);
             m_subject = bookings.findSubject(sub_string);
         }
-        else if(line.find("<student>"))
+        else if(line.find("<student>") != std::string::npos)
         {
             std::string search_string = "<student>";
             start_pos = line.find(search_string) + search_string.size();
@@ -73,13 +71,13 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
             sub_string = line.substr(start_pos, span);
             m_student = bookings.findStudent(sub_string);
         }
-        else if(line.find("<bookingdate>"))
+        else if(line.find("<bookingdate>") != std::string::npos)
         {
-            int day, month, year;
-            while (not line.find("</bookingdate>"))
+            int day, month, year = 0;
+            while (line.find("</bookingdate>") == std::string::npos)
             {
                 getline(input, line);
-                if(line.find("<day>"))
+                if(line.find("<day>") != std::string::npos)
                 {
                     std::string search_string = "<day>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -88,7 +86,7 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
                     sub_string = line.substr(start_pos, span);
                     day = stoi(sub_string);
                 }
-                else if(line.find("<month>"))
+                else if(line.find("<month>") != std::string::npos)
                 {
                     std::string search_string = "<month>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -97,7 +95,7 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
                     sub_string = line.substr(start_pos, span);
                     month = stoi(sub_string);
                 }
-                else if(line.find("<year>"))
+                else if(line.find("<year>") != std::string::npos)
                 {
                     std::string search_string = "<year>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -109,13 +107,13 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
                 m_booking_date.set_date(day, month, year);
             }
         }
-        else if(line.find("<bookingtime>"))
+        else if(line.find("<bookingtime>") != std::string::npos)
         {
             short hours, minutes, seconds = 0;
-            while (not line.find("</bookingtime>"))
+            while (line.find("</bookingtime>") == std::string::npos)
             {
                 getline(input, line);
-                if(line.find("<hour>"))
+                if(line.find("<hour>") != std::string::npos)
                 {
                     std::string search_string = "<hour>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -124,7 +122,7 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
                     sub_string = line.substr(start_pos, span);
                     hours = stoi(sub_string);
                 }
-                else if(line.find("<minute>"))
+                else if(line.find("<minute>") != std::string::npos)
                 {
                     std::string search_string = "<minute>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -133,7 +131,7 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
                     sub_string = line.substr(start_pos, span);
                     minutes = stoi(sub_string);
                 }
-                else if(line.find("<second>"))
+                else if(line.find("<second>") != std::string::npos)
                 {
                     std::string search_string = "<second>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -145,7 +143,7 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
                 m_booking_time.set_time(hours, minutes, seconds);
             }
         }
-        if(line.find("</booking>"))
+        if(line.find("</booking>") != std::string::npos)
             return;
     }
 }

@@ -68,5 +68,6 @@ void CEvent::set_event(std::string name, CPerson* teacher, CRoom* room, CBlock* 
     m_room = room;
     m_block = block;
     m_weekday = weekday;
-    m_period = period; 
+    m_period = period;
 }
+

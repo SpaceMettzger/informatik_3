@@ -2,6 +2,8 @@
 #include "cevent.hpp"
 #include <iostream>
 
+
+
 CSubject::CSubject(std::string subject_name, int number, CStudy* study_name):
     m_subject_name(subject_name),
     m_number(number),
@@ -33,38 +35,41 @@ std::string CSubject::get_name()
 }
 
 void CSubject::load(std::ifstream& input, CBookings& bookings)
-{
+    {
 std::string line;
     std::size_t start_pos, end_pos;
     int span;
     std::string sub_string;
     while (getline(input, line))
     {
-        if(line.find("<name>"))
+        if(line.find("<name>") != std::string::npos)
         {
-            start_pos = line.find("<name>");
+            std::string search_string = "<name>";
+            start_pos = line.find(search_string) + search_string.size();
             end_pos = line.find("</name>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
             m_subject_name = sub_string;
         }
-        else if(line.find("<subjectnr>"))
+        else if(line.find("<subjectnr>") != std::string::npos)
         {
-            start_pos = line.find("<subjectnr>");
+            std::string search_string = "<subjectnr>";
+            start_pos = line.find(search_string) + search_string.size();
             end_pos = line.find("</subjectnr>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
             m_number = stoi(sub_string);
         }
-        else if(line.find("<study>"))
+        else if(line.find("<study>") != std::string::npos)
         {
-            start_pos = line.find("<study>");
+            std::string search_string = "<study>";
+            start_pos = line.find(search_string) + search_string.size();
             end_pos = line.find("</study>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
             m_study_name = bookings.findStudy(sub_string);
         }
-        else if(line.find("<event>"))
+        else if(line.find("<event>") != std::string::npos)
         {
             std::string name;
             CPerson *teacher;
@@ -72,52 +77,64 @@ std::string line;
             CBlock *block;
             CWeekday weekday;
             short period;
-            while (not line.find("</event>"))
+            while (line.find("</event>") == std::string::npos)
             {
                 getline(input, line);
-                if(line.find("<name>"))
+                if(line.find("<name>") != std::string::npos)
                 {
-                    start_pos = line.find("<name>");
+                    std::string search_string = "<name>";
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</name>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
                     name = sub_string;
                 }
-                else if(line.find("<teacher>"))
+                else if(line.find("<teacher>") != std::string::npos)
                 {
-                    start_pos = line.find("<teacher>");
+                    std::string search_string = "<teacher>";
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</teacher>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
                     teacher = bookings.findTeacher(sub_string);
                 }
-                else if(line.find("<room>"))
+                else if(line.find("<room>") != std::string::npos)
                 {
-                    start_pos = line.find("<room>");
+                    std::string search_string = "<room>";
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</room>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
                     room = bookings.findRoom(sub_string);
                 }
-                else if(line.find("<block>"))
+                else if(line.find("<block>") != std::string::npos)
                 {
-                    start_pos = line.find("<block>");
+                    std::string search_string = "<block>";
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</block>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
                     block = bookings.findBlock(stoi(sub_string));
                 }
-                else if(line.find("<weekday>"))
+                else if(line.find("<weekday>") != std::string::npos)
                 {
-                    start_pos = line.find("<weekday>");
+                    std::string search_string = "<weekday>";
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</weekday>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
-                    weekday = CWeekday(stoi(sub_string));
+                    if(sub_string == "Mo") {weekday = Mo;}
+                    else if(sub_string == "Di") {weekday = Di;}
+                    else if(sub_string == "Mi") {weekday = Mi;}
+                    else if(sub_string == "Do") {weekday = Do;}
+                    else if(sub_string == "Fr") {weekday = Fr;}
+                    else if(sub_string == "Sa") {weekday = Sa;}
+                    else {weekday = So;}
                 }
-                else if(line.find("<period>"))
+                else if(line.find("<period>") != std::string::npos)
                 {
-                    start_pos = line.find("<period>");
+                    std::string search_string = "<period>";
+                    start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</period>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
@@ -127,7 +144,9 @@ std::string line;
             CEvent event = CEvent(name, teacher, room, block, weekday, period);
             addEvent(&event);
         }
-        else if (line.find("</subject>"))
+        else if (line.find("</subject>") != std::string::npos)
             break;
     }
 }
+
+

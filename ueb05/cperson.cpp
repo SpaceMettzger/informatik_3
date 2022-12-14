@@ -6,7 +6,7 @@
 #include <string>
 
 
-CPerson::CPerson(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year):
+CPerson::CPerson(std::string name, const char* street, const char* number, short zip, const char* city, short day, short month, short year):
         m_name(name),
         m_address(street, number, zip, city),
         m_birth_date(day, month, year)
@@ -50,7 +50,7 @@ CDate& CPerson::get_date()
 
 void CPerson::set_name(std::string name)
 {
-    m_name = name.c_str();
+    m_name = name;
 }
 
 void CPerson::set_address(std::string street, std::string number, int zip, std::string city)

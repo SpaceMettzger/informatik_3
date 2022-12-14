@@ -13,6 +13,7 @@ class CBlock {
 public:
     CBlock(short, CTime);
     CBlock();
+    ~CBlock();
     short getBlockNr();
     void print();
     CTime get_start_time();

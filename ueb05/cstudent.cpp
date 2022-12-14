@@ -22,7 +22,8 @@ CStudent::~CStudent()
 
 void CStudent::print()
 {
-        std::cout << get_name() << " (*";
+        std::string name = get_name();
+        std::cout << name << " (*";
         get_date().print();
         std::cout << "; MatNr. " << m_mat_nr << ")";
 }
@@ -35,33 +36,34 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
     std::string sub_string;
     while (getline(input, line))
     {
-        if(line.find("<name>"))
+        if(line.find("<name>") != std::string::npos)
         {
-            start_pos = line.find("<name>");
+            std::string search_string = "<name>";
+            start_pos = line.find(search_string) + search_string.size();
             end_pos = line.find("</name>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
-            set_name(sub_string.c_str());
+            set_name(sub_string);
         }
-        else if(line.find("<address>"))
+        else if(line.find("<address>") != std::string::npos)
         {
             std::string street = "";
             std::string number = "";
             int zip = 0;
             std::string city = "";
-            while (not line.find("</address>"))
+            while (line.find("</address>") == std::string::npos)
             {
-                std::string search_string = "<street>";
                 getline(input, line);
-                if(line.find(search_string))
+                if(line.find("<street>") != std::string::npos)
                 {
+                    std::string search_string = "<street>";
                     start_pos = line.find(search_string) + search_string.size();
                     end_pos = line.find("</street>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
                     street = sub_string;
                 }
-                else if(line.find("<housenr>"))
+                else if(line.find("<housenr>") != std::string::npos)
                 {
                     std::string search_string = "<housenr>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -70,7 +72,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     sub_string = line.substr(start_pos, span);
                     number = sub_string;
                 }
-                else if(line.find("<zipcode>"))
+                else if(line.find("<zipcode>") != std::string::npos)
                 {
                     std::string search_string = "<zipcode>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -79,7 +81,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     sub_string = line.substr(start_pos, span);
                     zip = stoi(sub_string);
                 }
-                else if(line.find("<city>"))
+                else if(line.find("<city>") != std::string::npos)
                 {
                     std::string search_string = "<city>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -91,15 +93,15 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             }
             set_address(street, number, zip, city);
         }
-        else if(line.find("<birthday>"))
+        else if(line.find("<birthday>") != std::string::npos)
         {
             int day = 0;
             int month = 0;
             int year = 0;
-            while (not line.find("</birthday>"))
+            while (line.find("</birthday>") == std::string::npos)
             {
                 getline(input, line);
-                if(line.find("<day>"))
+                if(line.find("<day>") != std::string::npos)
                 {
                     std::string search_string = "<day>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -108,7 +110,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     sub_string = line.substr(start_pos, span);
                     day = stoi(sub_string);
                 }
-                else if(line.find("<month>"))
+                else if(line.find("<month>") != std::string::npos)
                 {
                     std::string search_string = "<month>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -117,7 +119,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
                     sub_string = line.substr(start_pos, span);
                     month = stoi(sub_string);
                 }
-                else if(line.find("<year>"))
+                else if(line.find("<year>") != std::string::npos)
                 {
                     std::string search_string = "<year>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -129,7 +131,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             }
             set_date(day, month, year);
         }
-        else if(line.find("<matriculationnr>"))
+        else if(line.find("<matriculationnr>") != std::string::npos)
         {
             std::string search_string = "<matriculationnr>";
             start_pos = line.find(search_string) + search_string.size();
@@ -138,17 +140,16 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             sub_string = line.substr(start_pos, span);
             m_mat_nr = stoi(sub_string);
         }
-        else if(line.find("<term>"))
+        else if(line.find("<term>") != std::string::npos)
         {
             std::string search_string = "<term>";
             start_pos = line.find(search_string) + search_string.size();
-            start_pos = line.find("<term>");
             end_pos = line.find("</term>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
             m_fs = stoi(sub_string);
         }
-        else if(line.find("<credits>"))
+        else if(line.find("<credits>") != std::string::npos)
         {
             std::string search_string = "<credits>";
             start_pos = line.find(search_string) + search_string.size();
@@ -157,7 +158,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             sub_string = line.substr(start_pos, span);
             m_credits = stoi(sub_string);
         }
-        else if(line.find("<study>"))
+        else if(line.find("<study>") != std::string::npos)
         {
             std::string search_string = "<study>";
             start_pos = line.find(search_string) + search_string.size();
@@ -166,7 +167,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             sub_string = line.substr(start_pos, span);
             m_study = bookings.findStudy(sub_string);
         }
-        else if (line.find("</student>"))
+        else if (line.find("</student>") != std::string::npos)
         {
         return;
         }

@@ -18,7 +18,8 @@ CTeacher::~CTeacher()
 
 void CTeacher::print()
 {
-    std::cout << get_name() << " (" << m_pers_nr << ")";
+    std::string name = get_name();
+    std::cout << name << " (" << m_pers_nr << ")";
 };
 
 
@@ -30,7 +31,7 @@ std::string line;
     std::string sub_string;
     while (getline(input, line))
     {
-        if(line.find("<name>"))
+        if(line.find("<name>") != std::string::npos)
         {
             std::string search_string = "<name>";
             start_pos = line.find(search_string) + search_string.size();
@@ -39,16 +40,16 @@ std::string line;
             sub_string = line.substr(start_pos, span);
             set_name(sub_string.c_str());
         }
-        else if(line.find("<address>"))
+        else if(line.find("<address>") != std::string::npos)
         {
             std::string street = "";
             std::string number = "";
             int zip = 0;
             std::string city = "";
-            while (not line.find("</address>"))
+            while (line.find("</address>") == std::string::npos)
             {
                 getline(input, line);
-                if(line.find("<street>"))
+                if(line.find("<street>") != std::string::npos)
                 {
                     std::string search_string = "<street>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -57,7 +58,7 @@ std::string line;
                     sub_string = line.substr(start_pos, span);
                     street = sub_string;
                 }
-                else if(line.find("<housenr>"))
+                else if(line.find("<housenr>") != std::string::npos)
                 {
                     std::string search_string = "<housenr>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -66,7 +67,7 @@ std::string line;
                     sub_string = line.substr(start_pos, span);
                     number = sub_string;
                 }
-                else if(line.find("<zipcode>"))
+                else if(line.find("<zipcode>") != std::string::npos)
                 {
                     std::string search_string = "<zipcode>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -75,7 +76,7 @@ std::string line;
                     sub_string = line.substr(start_pos, span);
                     zip = stoi(sub_string);
                 }
-                else if(line.find("<city>"))
+                else if(line.find("<city>") != std::string::npos)
                 {
                     std::string search_string = "<city>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -87,15 +88,15 @@ std::string line;
             }
             set_address(street, number, zip, city);
         }
-        else if(line.find("<birthday>"))
+        else if(line.find("<birthday>") != std::string::npos)
         {
             int day = 0;
             int month = 0;
             int year = 0;
-            while (not line.find("</birthday>"))
+            while (line.find("</birthday>") == std::string::npos)
             {
                 getline(input, line);
-                if(line.find("<day>"))
+                if(line.find("<day>") != std::string::npos)
                 {
                     std::string search_string = "<day>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -104,7 +105,7 @@ std::string line;
                     sub_string = line.substr(start_pos, span);
                     day = stoi(sub_string);
                 }
-                else if(line.find("<month>"))
+                else if(line.find("<month>") != std::string::npos)
                 {
                     std::string search_string = "<month>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -113,7 +114,7 @@ std::string line;
                     sub_string = line.substr(start_pos, span);
                     month = stoi(sub_string);
                 }
-                else if(line.find("<year>"))
+                else if(line.find("<year>") != std::string::npos)
                 {
                     std::string search_string = "<year>";
                     start_pos = line.find(search_string) + search_string.size();
@@ -125,7 +126,7 @@ std::string line;
             }
             set_date(day, month, year);
         }
-        else if(line.find("<personalnr>"))
+        else if(line.find("<personalnr>") != std::string::npos)
         {
             std::string search_string = "<personalnr>";
             start_pos = line.find(search_string) + search_string.size();
@@ -134,7 +135,7 @@ std::string line;
             sub_string = line.substr(start_pos, span);
             m_pers_nr = stoi(sub_string);
         }
-        else if (line.find("</teacher>"))
+        else if (line.find("</teacher>") != std::string::npos)
             break;
     }
 }

@@ -1,8 +1,9 @@
 #ifndef CSUBJECT_HPP
 #define CSUBJECT_HPP
 
-#include "cstudy.hpp"
 #include "cevent.hpp"
+#include "cstudy.hpp"
+#include "croom.hpp"
 #include <string>
 #include <vector>
 
@@ -25,6 +26,8 @@ class CSubject
     std::string get_name();
     void load(std::ifstream& input, CBookings& bookings);
 };
+
+
 
 
 #endif

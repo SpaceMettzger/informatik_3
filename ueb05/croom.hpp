@@ -11,15 +11,16 @@ class CBookings;
 class CRoom {
 
 public:
-    CRoom(const char*, const char*, short);
+    CRoom(std::string, const char*, short);
     CRoom();
+    ~CRoom();
     void print();
     std::string get_building();
     void load(std::ifstream&, CBookings& bookings);
     std::string get_name();
 
 private:
-    const char* m_name;
+    std::string m_name;
     const char* m_building;
     short m_seats;
 };

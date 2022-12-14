@@ -8,7 +8,7 @@
 class CPerson {
 
 public:
-    CPerson(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year);
+    CPerson(std::string name, const char* street, const char* number, short zip, const char* city, short day, short month, short year);
     CPerson();
     virtual ~CPerson();
     void print();
@@ -22,7 +22,7 @@ public:
 private:
     inline static unsigned int id = 0;
     unsigned int m_id;
-    const char* m_name;
+    std::string m_name;
     CAddress m_address;
     CDate m_birth_date;
 };

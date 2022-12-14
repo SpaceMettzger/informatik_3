@@ -5,8 +5,6 @@
 #include "cperson.hpp"
 #include "cblock.hpp"
 
-
-
 #include <string>
 
 class CBlock;
@@ -23,6 +21,7 @@ enum CWeekday
     Sa = 6,
     So = 7
 };
+
 
 class CEvent
 {

@@ -30,6 +30,7 @@ class CBookings
 
     public:
     CBookings(std::string file_name);
+    ~CBookings();
     CBlock* findBlock(int id);
     CRoom* findRoom(std::string name);
     CStudy* findStudy(std::string name);
