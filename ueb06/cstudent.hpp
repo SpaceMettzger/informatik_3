@@ -17,6 +17,10 @@ public:
     CStudent();
     ~CStudent();
     void print();
+    void set_mat_nr(unsigned int);
+    void set_fs(unsigned short);
+    void set_credits(unsigned);
+    void set_study(CStudy* study);
     void load(std::ifstream& input, CBookings& bookings);
 
 private:

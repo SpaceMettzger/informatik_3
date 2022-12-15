@@ -14,6 +14,7 @@ public:
     CTeacher(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year, unsigned int m_pers_nr);
     CTeacher();
     ~CTeacher();
+    void set_pers_nr(unsigned int);
     void print();
     void load(std::ifstream& input, CBookings& bookings);
 

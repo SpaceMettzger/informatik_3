@@ -54,6 +54,12 @@ CBookings::CBookings(std::string file)
             booking->load(file_input, *this);
             m_bookings.push_back(booking);
         }
+        else if (line.find("<tutor>") != std::string::npos)
+        {
+            CTutor* tutor = new CTutor();
+            tutor->load(file_input, *this);
+            m_tutors.push_back(tutor);
+        }
     }
     std::cout << "Datei wurde erfolgreich eingelesen!" << std::endl << std::endl;
 }
@@ -195,7 +201,7 @@ CTeacher* CBookings::findTeacher(std::string name)
 }
 
 
-void CBookings::print()
+void CBookings::printBookings()
 {
     std::cout << "Belegungen:" << std::endl << std::endl;
     int len_m_bookings = m_bookings.size();
@@ -207,3 +213,13 @@ void CBookings::print()
 }
 
 
+void CBookings::printPersons()
+{
+    std::cout << "Personen:" << std::endl << std::endl;
+    int len_m_bookings = m_bookings.size();
+    for (int i= 0; i < len_m_bookings; i++)
+    {
+        m_bookings[i]->print();
+        std::cout << std::endl << std::endl;
+    }
+}

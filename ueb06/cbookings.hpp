@@ -9,6 +9,7 @@
 #include "cbooking.hpp"
 #include "cstudent.hpp"
 #include "cteacher.hpp"
+#include "ctutor.hpp"
 
 class CBlock;
 class CStudy;
@@ -17,6 +18,7 @@ class CRoom;
 class CSubject;
 class CBooking;
 class CTeacher;
+class CTutor;
 
 class CBookings
 {
@@ -27,6 +29,7 @@ class CBookings
     std::vector <CBooking*> m_bookings;
     std::vector <CStudent*> m_students;
     std::vector <CTeacher*> m_teachers;
+    std::vector <CTutor*> m_tutors;
 
     public:
     CBookings(std::string file_name);
@@ -38,8 +41,8 @@ class CBookings
     CBooking* findBooking(int id);
     CStudent* findStudent(std::string name);
     CTeacher* findTeacher(std::string name);
-    void print();
-
+    void printBookings();
+    void printPersons();
 };
 
 

@@ -1,57 +1,34 @@
+#include "ctutor.hpp"
 #include "cstudent.hpp"
 #include <iostream>
 #include <iomanip>
 #include <string>
 
 
-CStudent::CStudent(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year,
-                    unsigned int mat_nr, unsigned short fs, unsigned credits, CStudy* study):
-        CPerson(name, street, number, zip, city, day, month, year),
-        m_mat_nr(mat_nr),
-        m_fs(fs),
-        m_credits(credits),
-        m_study(study)
-        {}
+CTutor::CTutor(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year,
+                    unsigned int mat_nr, unsigned short fs, unsigned credits, CStudy* study, unsigned int pers_nr, unsigned int semesters_working):
+    CStudent(name, street, number, zip, city, day, month, year, mat_nr, fs, credits, study),
+    CTeacher(name, street, number, zip, city, day, month, year, pers_nr),
+    m_num_semesters_working(semesters_working)
+    {};
 
-CStudent::CStudent() {}
+CTutor::CTutor() {}
 
-CStudent::~CStudent()
+CTutor::~CTutor()
 {
-    std::cout << "Student " << get_name() << " wird vernichtet" << std::endl;
+    std::cout << "Tutor*in " << get_name() << " wird vernichtet" << std::endl;
 }
 
-void CStudent::set_mat_nr(unsigned int nr)
+void CTutor::print()
 {
-    m_mat_nr = nr;
-}
+    std::string name = get_name();
+    std::cout << name << " (" << ")";
+};
 
-void CStudent::set_fs(unsigned short fs)
-{
-    m_fs = fs;
-}
 
-void CStudent::set_credits(unsigned credits)
+void CTutor::load(std::ifstream& input, CBookings& bookings)
 {
-    m_credits = credits;
-}
-
-void CStudent::set_study(CStudy* study)
-{
-    m_study = study;
-}
-
-void CStudent::print()
-{
-        std::string name = get_name();
-        std::cout << name << " (*";
-        get_date().print();
-        int id = get_id();
-        std::cout << "; MatNr. " << m_mat_nr << "; ID " << id << ")";
-}
-
-void CStudent::load(std::ifstream& input, CBookings& bookings)
-{
-    std::string line;
+std::string line;
     std::size_t start_pos, end_pos;
     int span;
     std::string sub_string;
@@ -64,7 +41,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             end_pos = line.find("</name>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
-            set_name(sub_string);
+            set_name(sub_string.c_str());
         }
         else if(line.find("<address>") != std::string::npos)
         {
@@ -159,7 +136,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             end_pos = line.find("</matriculationnr>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
-            m_mat_nr = stoi(sub_string);
+            set_mat_nr(stoi(sub_string));
         }
         else if(line.find("<term>") != std::string::npos)
         {
@@ -168,7 +145,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             end_pos = line.find("</term>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
-            m_fs = stoi(sub_string);
+            set_fs(stoi(sub_string));
         }
         else if(line.find("<credits>") != std::string::npos)
         {
@@ -177,7 +154,7 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             end_pos = line.find("</credits>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
-            m_credits = stoi(sub_string);
+            set_credits(stoi(sub_string));
         }
         else if(line.find("<study>") != std::string::npos)
         {
@@ -186,11 +163,18 @@ void CStudent::load(std::ifstream& input, CBookings& bookings)
             end_pos = line.find("</study>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
-            m_study = bookings.findStudy(sub_string);
+            set_study(bookings.findStudy(sub_string));
         }
-        else if (line.find("</student>") != std::string::npos)
+        else if(line.find("<personalnr>") != std::string::npos)
         {
-        return;
+            std::string search_string = "<personalnr>";
+            start_pos = line.find(search_string) + search_string.size();
+            end_pos = line.find("</personalnr>");
+            span = end_pos - start_pos;
+            sub_string = line.substr(start_pos, span);
+            set_pers_nr(stoi(sub_string));
         }
+        else if (line.find("</tutor>") != std::string::npos)
+            break;
     }
 }

@@ -9,6 +9,7 @@
 
 class CStudent;
 class CSubject;
+class CTutor;
 
 class CBooking
 {

@@ -16,6 +16,11 @@ CTeacher::~CTeacher()
     std::cout << "Lehrer*in " << get_name() << " wird vernichtet" << std::endl;
 }
 
+void CTeacher::set_pers_nr(unsigned int pers_nr)
+{
+    m_pers_nr = pers_nr;
+}
+
 void CTeacher::print()
 {
     std::string name = get_name();
