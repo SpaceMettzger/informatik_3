@@ -920,3 +920,122 @@ unsigned long long operator ""_b(const char* d)
         d++;
     }
 }
+
+
+// 12. Templates
+
+template <class T>
+T Maximum(T a, T b)
+{
+    if (a > b)
+        return a;
+    return b;
+}
+
+int main() 
+{
+    int i;
+    float f;
+    char c;
+
+    i = Maximum(1, 3);
+    f = Maximum(2.5, 7.1);
+    c = Maximum('A', 'Z');
+    double d;
+    d = Maximum<int>('A', 3);
+    CPerson P1, P2, P3;
+    P3 = Maximum(P1, P2);
+
+}
+
+
+template <class T>
+class A
+{
+    T* ptr;
+
+    public:
+    A(T a)
+    {
+        ptr = new T;
+        if (ptr)
+            *ptr = a;
+    }
+
+    ~A()
+    {
+        delete ptr;
+    }
+};
+
+int main ()
+{
+    int i;
+    A <int> x(3);
+    A <CPerson> y(P1);
+    vector <CPerson*> Personen;
+}
+
+template <class T1, class T2>
+class Tuple 
+{
+    T1 t1;
+    T2 t2;
+};
+
+Tuple <int, float> m; 
+
+class B
+{
+    public:
+    template <class T>
+    void print(T &t)
+    {
+        t.Ausgabe();
+    }
+};
+
+class x
+{
+    public:
+    void Ausgabe() {}
+};
+
+class y
+{
+    public:
+    void Ausgabe() {}
+};
+
+int main()
+{
+    B b;
+    x einx;
+    y einy;
+
+    b.print(einx);
+    b.print(einy);
+}
+
+// 2^11 = 2*2^10 = 2*2*2^9 ...
+
+template <int n>
+struct ZweiHoch
+{
+    enum 
+    {
+        Wert = 2 * ZweiHoch <n-1>::Wert 
+    };
+};
+struct ZweiHoch <0>
+{
+    enum
+    {
+        Wert = 1
+    };
+};
+
+int main() 
+{
+    cout << ZweiHoch<11>::Wert;
+}

@@ -1,0 +1,192 @@
+# depslib dependency file v1.0
+1670599298 source:/home/philipp/Documents/projects/informatik_3/ueb07/caddress.cpp
+	"caddress.hpp"
+	<iostream>
+	<string>
+
+1670593155 /home/philipp/Documents/projects/informatik_3/ueb07/caddress.hpp
+	<string>
+
+1670569745 source:/home/philipp/Documents/projects/informatik_3/ueb07/cdate.cpp
+	"cdate.hpp"
+	<iostream>
+	<iomanip>
+	<ctime>
+
+1671021165 /home/philipp/Documents/projects/informatik_3/ueb07/cdate.hpp
+
+1671017565 source:/home/philipp/Documents/projects/informatik_3/ueb07/cevent.cpp
+	"croom.hpp"
+	"cperson.hpp"
+	"cblock.hpp"
+	"cevent.hpp"
+	"ctime.hpp"
+	<string>
+	<iostream>
+	<iomanip>
+
+1671020587 /home/philipp/Documents/projects/informatik_3/ueb07/croom.hpp
+	<string>
+	<fstream>
+	"cbookings.hpp"
+
+1671198511 /home/philipp/Documents/projects/informatik_3/ueb07/cbookings.hpp
+	<vector>
+	"clist.hpp"
+	"cblock.hpp"
+	"croom.hpp"
+	"csubject.hpp"
+	"cstudy.hpp"
+	"cbooking.hpp"
+	"cstudent.hpp"
+	"cteacher.hpp"
+	"ctutor.hpp"
+
+1671197695 /home/philipp/Documents/projects/informatik_3/ueb07/clist.h
+	<cassert>
+	<cstddef>
+
+1671020411 /home/philipp/Documents/projects/informatik_3/ueb07/cblock.hpp
+	"ctime.hpp"
+	"cbookings.hpp"
+	<iostream>
+
+1670578015 /home/philipp/Documents/projects/informatik_3/ueb07/ctime.hpp
+
+1671016299 /home/philipp/Documents/projects/informatik_3/ueb07/csubject.hpp
+	"cevent.hpp"
+	"cstudy.hpp"
+	"croom.hpp"
+	<string>
+	<vector>
+
+1671017577 /home/philipp/Documents/projects/informatik_3/ueb07/cevent.hpp
+	"croom.hpp"
+	"cperson.hpp"
+	"cblock.hpp"
+	<string>
+
+1671186668 /home/philipp/Documents/projects/informatik_3/ueb07/cperson.hpp
+	"caddress.hpp"
+	"cdate.hpp"
+	<string>
+
+1670570637 /home/philipp/Documents/projects/informatik_3/ueb07/cstudy.hpp
+	<string>
+	<fstream>
+	"cbookings.hpp"
+
+1671198003 /home/philipp/Documents/projects/informatik_3/ueb07/cbooking.hpp
+	"csubject.hpp"
+	"cstudent.hpp"
+	"cdate.hpp"
+	"ctime.hpp"
+	"cbookings.hpp"
+
+1671187755 /home/philipp/Documents/projects/informatik_3/ueb07/cstudent.hpp
+	"cperson.hpp"
+	<string>
+	<iostream>
+	<iomanip>
+
+1671188137 /home/philipp/Documents/projects/informatik_3/ueb07/cteacher.hpp
+	"cperson.hpp"
+	<string>
+	<iostream>
+	<iomanip>
+
+1671185358 /home/philipp/Documents/projects/informatik_3/ueb07/ctutor.hpp
+	"cstudent.hpp"
+	"cteacher.hpp"
+	"cbookings.hpp"
+	<string>
+	<iostream>
+	<iomanip>
+
+1670266311 source:/home/philipp/Documents/projects/informatik_3/ueb07/cevents.cpp
+	"cevents.hpp"
+	"cevent.hpp"
+	<iostream>
+	<vector>
+
+1670266311 /home/philipp/Documents/projects/informatik_3/ueb07/cevents.hpp
+	<vector>
+	"cevent.hpp"
+
+1671102459 source:/home/philipp/Documents/projects/informatik_3/ueb07/cperson.cpp
+	"cperson.hpp"
+	"caddress.hpp"
+	"cdate.hpp"
+	<iostream>
+	<iomanip>
+	<string>
+
+1671020561 source:/home/philipp/Documents/projects/informatik_3/ueb07/croom.cpp
+	"croom.hpp"
+	<iostream>
+	<string>
+
+1671188712 source:/home/philipp/Documents/projects/informatik_3/ueb07/cstudent.cpp
+	"cstudent.hpp"
+	"cbookings.hpp"
+	<iostream>
+	<iomanip>
+	<string>
+
+1671001226 source:/home/philipp/Documents/projects/informatik_3/ueb07/cstudy.cpp
+	"cstudy.hpp"
+	<string>
+	<iostream>
+
+1671020468 source:/home/philipp/Documents/projects/informatik_3/ueb07/cblock.cpp
+	"cblock.hpp"
+	"ctime.hpp"
+	"cbookings.hpp"
+	<iostream>
+	<iomanip>
+	<string>
+
+1671197524 source:/home/philipp/Documents/projects/informatik_3/ueb07/cbookings.cpp
+	"cbookings.hpp"
+	"clist.h"
+	<string>
+	<fstream>
+
+1671187606 source:/home/philipp/Documents/projects/informatik_3/ueb07/cbooking.cpp
+	"cbooking.hpp"
+	<string>
+	<iomanip>
+
+1671188641 source:/home/philipp/Documents/projects/informatik_3/ueb07/csubject.cpp
+	"csubject.hpp"
+	"cevent.hpp"
+	<iostream>
+
+1671188386 source:/home/philipp/Documents/projects/informatik_3/ueb07/cteacher.cpp
+	"cteacher.hpp"
+	"cbookings.hpp"
+	<iostream>
+	<iomanip>
+	<string>
+
+1670578050 source:/home/philipp/Documents/projects/informatik_3/ueb07/ctime.cpp
+	"ctime.hpp"
+	<ctime>
+	<iomanip>
+	<iostream>
+
+1671188300 source:/home/philipp/Documents/projects/informatik_3/ueb07/ctutor.cpp
+	"ctutor.hpp"
+	"cstudent.hpp"
+	<iostream>
+	<iomanip>
+	<string>
+
+1671198015 source:/home/philipp/Documents/projects/informatik_3/ueb07/ueb07.cpp
+	<iostream>
+	"cbookings.hpp"
+
+1671197695 /home/philipp/Documents/projects/informatik_3/ueb07/clist.hpp
+	<cassert>
+	<cstddef>
+
