@@ -1,23 +1,19 @@
 #ifndef CTUTOR_HPP
 #define CTUTOR_HPP
 
-#include "cperson.hpp"
 #include "cstudent.hpp"
 #include "cteacher.hpp"
+#include "cbookings.hpp"
 #include <string>
 #include <iostream>
 #include <iomanip>
 
-class CStudy;
-class CPerson;
-class CStudent;
-class CTeacher;
+
 
 class CTutor: public CStudent, public CTeacher
 {
 public:
-    CTutor(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year,
-                    unsigned int mat_nr, unsigned short fs, unsigned credits, CStudy* study, unsigned int pers_nr ,unsigned int num_semesters_working);
+    CTutor(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year, unsigned int mat_nr, unsigned short fs, unsigned credits, CStudy* study, unsigned int pers_nr, unsigned int num_semesters_working);
     CTutor();
     ~CTutor();
     void print();

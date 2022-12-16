@@ -15,7 +15,7 @@ CPerson::CPerson(std::string name, const char* street, const char* number, short
         m_id = id;
     }
 
-CPerson::CPerson()         
+CPerson::CPerson()
     {
         id ++;
         m_id = id;

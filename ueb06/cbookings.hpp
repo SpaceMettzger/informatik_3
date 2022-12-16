@@ -15,6 +15,7 @@ class CBlock;
 class CStudy;
 class CPerson;
 class CRoom;
+class CStudent;
 class CSubject;
 class CBooking;
 class CTeacher;
@@ -27,9 +28,8 @@ class CBookings
     std::vector <CStudy*> m_studies;
     std::vector <CSubject*> m_subjects;
     std::vector <CBooking*> m_bookings;
-    std::vector <CStudent*> m_students;
-    std::vector <CTeacher*> m_teachers;
-    std::vector <CTutor*> m_tutors;
+    std::vector <CPerson*> m_persons;
+
 
     public:
     CBookings(std::string file_name);
@@ -41,6 +41,7 @@ class CBookings
     CBooking* findBooking(int id);
     CStudent* findStudent(std::string name);
     CTeacher* findTeacher(std::string name);
+    CPerson* findPerson(std::string name);
     void printBookings();
     void printPersons();
 };

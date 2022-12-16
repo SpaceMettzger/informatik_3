@@ -11,7 +11,7 @@ public:
     CPerson(std::string name, const char* street, const char* number, short zip, const char* city, short day, short month, short year);
     CPerson();
     virtual ~CPerson();
-    void print();
+    virtual void print();
     CAddress& getAddress();
     std::string get_name();
     int get_id();

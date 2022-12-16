@@ -1,4 +1,5 @@
 #include "cstudent.hpp"
+#include "cbookings.hpp"
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -17,7 +18,7 @@ CStudent::CStudent() {}
 
 CStudent::~CStudent()
 {
-    std::cout << "Student " << get_name() << " wird vernichtet" << std::endl;
+    std::cout << "Student*in " << get_name() << " wird vernichtet" << std::endl;
 }
 
 void CStudent::set_mat_nr(unsigned int nr)
@@ -40,13 +41,18 @@ void CStudent::set_study(CStudy* study)
     m_study = study;
 }
 
+int CStudent::get_mat_nr()
+{
+    return m_mat_nr;
+}
+
 void CStudent::print()
 {
         std::string name = get_name();
         std::cout << name << " (*";
         get_date().print();
         int id = get_id();
-        std::cout << "; MatNr. " << m_mat_nr << "; ID " << id << ")";
+        std::cout << "; ID " << id << "; MatNr. " << m_mat_nr << ")";
 }
 
 void CStudent::load(std::ifstream& input, CBookings& bookings)

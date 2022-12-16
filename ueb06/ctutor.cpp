@@ -7,8 +7,6 @@
 
 CTutor::CTutor(const char* name, const char* street, const char* number, short zip, const char* city, short day, short month, short year,
                     unsigned int mat_nr, unsigned short fs, unsigned credits, CStudy* study, unsigned int pers_nr, unsigned int semesters_working):
-    CStudent(name, street, number, zip, city, day, month, year, mat_nr, fs, credits, study),
-    CTeacher(name, street, number, zip, city, day, month, year, pers_nr),
     m_num_semesters_working(semesters_working)
     {};
 
@@ -21,10 +19,14 @@ CTutor::~CTutor()
 
 void CTutor::print()
 {
-    std::string name = get_name();
-    std::cout << name << " (" << ")";
+        std::string name = get_name();
+        std::cout << name << " (*";
+        get_date().print();
+        int id = get_id();
+        int mat_nr = get_mat_nr();
+        int pers_nr = get_pers_nr();
+        std::cout << "; ID " << id << "; MatNr. " << mat_nr << "; PersNr. " << pers_nr << ")";
 };
-
 
 void CTutor::load(std::ifstream& input, CBookings& bookings)
 {

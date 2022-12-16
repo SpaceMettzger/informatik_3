@@ -2,11 +2,12 @@
 #define CTEACHER_HPP
 
 #include "cperson.hpp"
-#include "cbookings.hpp"
-#include <string>
 #include <string>
 #include <iostream>
 #include <iomanip>
+
+class CPerson;
+class CBookings;
 
 class CTeacher: virtual public CPerson {
 
@@ -15,6 +16,7 @@ public:
     CTeacher();
     ~CTeacher();
     void set_pers_nr(unsigned int);
+    int get_pers_nr();
     void print();
     void load(std::ifstream& input, CBookings& bookings);
 

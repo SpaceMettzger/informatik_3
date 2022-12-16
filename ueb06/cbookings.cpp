@@ -34,13 +34,13 @@ CBookings::CBookings(std::string file)
         {
             CStudent* student = new CStudent();
             student->load(file_input, *this);
-            m_students.push_back(student);
+            m_persons.push_back(student);
         }
         else if (line.find("<teacher>") != std::string::npos)
         {
             CTeacher* teacher = new CTeacher();
             teacher->load(file_input, *this);
-            m_teachers.push_back(teacher);
+            m_persons.push_back(teacher);
         }
         else if (line.find("<subject>") != std::string::npos)
         {
@@ -58,7 +58,7 @@ CBookings::CBookings(std::string file)
         {
             CTutor* tutor = new CTutor();
             tutor->load(file_input, *this);
-            m_tutors.push_back(tutor);
+            m_persons.push_back(tutor);
         }
     }
     std::cout << "Datei wurde erfolgreich eingelesen!" << std::endl << std::endl;
@@ -91,21 +91,13 @@ CBookings::~CBookings()
     }
     std::cout << "Studiengaenge freigeben ok." << std::endl;
 
-    vec_len = m_students.size();
-    std::cout << "Studenten freigeben..." << std::endl;
+    vec_len = m_persons.size();
+    std::cout << "Personen freigeben..." << std::endl;
     for (i = 0; i < vec_len; i++)
     {
-        delete m_students[i];
+        delete m_persons[i];
     }
     std::cout << "Studenten freigeben ok." << std::endl;
-
-    vec_len = m_teachers.size();
-    std::cout << "Dozenten freigeben..." << std::endl;
-    for (i = 0; i < vec_len; i++)
-    {
-        delete m_teachers[i];
-    }
-    std::cout << "Dozenten freigeben ok." << std::endl;
 
     vec_len = m_subjects.size();
     std::cout << "Faecher freigeben..." << std::endl;
@@ -123,6 +115,7 @@ CBookings::~CBookings()
     }
     std::cout << "Belegungen freigeben ok." << std::endl;
 };
+
 
 CStudy* CBookings::findStudy(std::string name)
 {
@@ -156,6 +149,7 @@ CRoom* CBookings::findRoom(std::string name)
     }
     return nullptr;
 }
+
 CSubject* CBookings::findSubject(std::string name)
 {
     int vec_len = m_subjects.size();
@@ -169,6 +163,7 @@ CSubject* CBookings::findSubject(std::string name)
     }
     return nullptr;
 }
+
 CBooking* CBookings::findBooking(int id)
 {
     int vec_len = m_bookings.size();
@@ -179,27 +174,17 @@ CBooking* CBookings::findBooking(int id)
     }
     return nullptr;
 }
-CStudent* CBookings::findStudent(std::string name)
+
+CPerson* CBookings::findPerson(std::string name)
 {
-    int vec_len = m_students.size();
-    for (int i = 0;i < vec_len; i++)
-    {
-        if (m_students[i]->get_name() == name)
-            return m_students[i];
-    }
-    return nullptr;
-}
-CTeacher* CBookings::findTeacher(std::string name)
-{
-    int vec_len = m_teachers.size();
+    int vec_len = m_persons.size();
     for (int i = 0; i < vec_len; i++)
     {
-        if (m_teachers[i]->get_name() == name)
-            return m_teachers[i];
+        if (m_persons[i]->get_name() == name)
+            return m_persons[i];
     }
     return nullptr;
 }
-
 
 void CBookings::printBookings()
 {
@@ -216,10 +201,11 @@ void CBookings::printBookings()
 void CBookings::printPersons()
 {
     std::cout << "Personen:" << std::endl << std::endl;
-    int len_m_bookings = m_bookings.size();
-    for (int i= 0; i < len_m_bookings; i++)
+    int len_m_persons = m_persons.size();
+    for (int i= 0; i < len_m_persons; i++)
     {
-        m_bookings[i]->print();
-        std::cout << std::endl << std::endl;
+        m_persons[i]->print();
+        std::cout << std::endl;
     }
+    std::cout << std::endl;
 }

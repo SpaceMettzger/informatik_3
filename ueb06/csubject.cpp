@@ -96,7 +96,7 @@ std::string line;
                     end_pos = line.find("</teacher>");
                     span = end_pos - start_pos;
                     sub_string = line.substr(start_pos, span);
-                    teacher = bookings.findTeacher(sub_string);
+                    teacher = bookings.findPerson(sub_string);
                 }
                 else if(line.find("<room>") != std::string::npos)
                 {

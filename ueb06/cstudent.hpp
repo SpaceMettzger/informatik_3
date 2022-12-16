@@ -2,12 +2,13 @@
 #define CSTUDENT_HPP
 
 #include "cperson.hpp"
-#include "cstudy.hpp"
 #include <string>
 #include <iostream>
 #include <iomanip>
 
 class CStudy;
+class CBookings;
+class CPerson;
 
 class CStudent: virtual public CPerson
 {
@@ -17,6 +18,7 @@ public:
     CStudent();
     ~CStudent();
     void print();
+    int get_mat_nr();
     void set_mat_nr(unsigned int);
     void set_fs(unsigned short);
     void set_credits(unsigned);

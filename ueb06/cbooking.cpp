@@ -2,7 +2,7 @@
 #include <string>
 #include <iomanip>
 
-CBooking::CBooking(CSubject* subject, CStudent* student, int booking_day, int booking_month, int booking_year, int booking_hour, int booking_minute, int booking_seconds):
+CBooking::CBooking(CSubject* subject, CPerson* student, int booking_day, int booking_month, int booking_year, int booking_hour, int booking_minute, int booking_seconds):
     m_subject(subject),
     m_student(student),
     m_booking_date(booking_day, booking_month, booking_year),
@@ -69,7 +69,7 @@ void CBooking::load(std::ifstream& input, CBookings& bookings)
             end_pos = line.find("</student>");
             span = end_pos - start_pos;
             sub_string = line.substr(start_pos, span);
-            m_student = bookings.findStudent(sub_string);
+            m_student = bookings.findPerson(sub_string);
         }
         else if(line.find("<bookingdate>") != std::string::npos)
         {

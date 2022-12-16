@@ -1,4 +1,5 @@
 #include "cteacher.hpp"
+#include "cbookings.hpp"
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -21,10 +22,19 @@ void CTeacher::set_pers_nr(unsigned int pers_nr)
     m_pers_nr = pers_nr;
 }
 
+int CTeacher::get_pers_nr()
+{
+    return m_pers_nr;
+}
+
+
 void CTeacher::print()
 {
-    std::string name = get_name();
-    std::cout << name << " (" << m_pers_nr << ")";
+        std::string name = get_name();
+        std::cout << name << " (*";
+        get_date().print();
+        int id = get_id();
+        std::cout << "; ID " << id  << "; PersNr. " << m_pers_nr << ")";
 };
 
 
