@@ -20,6 +20,7 @@ public:
     CTime get_end_time();
     void load(std::ifstream& input, CBookings&);
     int get_id();
+    CTime operator+(short);
 
 private:
     short m_block_id;

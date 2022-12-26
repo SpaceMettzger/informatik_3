@@ -40,7 +40,7 @@ class CBookings
     CList <CPerson*> m_persons;
 
 
-    public:
+public:
     CBookings(std::string file_name);
     ~CBookings();
     void operator()(OutputFormats);

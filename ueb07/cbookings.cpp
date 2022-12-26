@@ -4,6 +4,40 @@
 #include <string>
 #include <fstream>
 
+namespace
+{
+
+void printStudents(
+    CList <CPerson*>& persons)
+{
+    std::cout << "Students:" << std::endl;
+    for (const auto& person : persons)
+    {
+        if (dynamic_cast<CStudent*>(person) != nullptr)
+        {
+            person->print();
+            std::cout << std::endl;
+        }
+    }
+}
+
+void printTeachers(
+    CList <CPerson*>& persons)
+{
+    std::cout << "Teachers:" << std::endl;
+    for (const auto& person : persons)
+    {
+        if (dynamic_cast<CTeacher*>(person) != nullptr)
+        {
+            person->print();
+            std::cout << std::endl;
+        }
+    }
+}
+
+
+} // namespace
+
 CBookings::CBookings(std::string file)
 {
     std::fstream inoutput;
@@ -93,7 +127,11 @@ CBookings::~CBookings()
     std::cout << "Studiengaenge freigeben ok." << std::endl;
 
     std::cout << "Personen freigeben..." << std::endl;
-    delete &m_persons;
+        for (auto& person : m_persons)
+    {
+        delete person;
+    }
+
     std::cout << "Personen freigeben ok." << std::endl;
 
     vec_len = m_subjects.size();
@@ -174,91 +212,63 @@ CBooking* CBookings::findBooking(int id)
 
 CPerson* CBookings::findPerson(std::string name)
 {
-    CPerson* person = m_persons.front();
-    do
+    for (const auto& person : m_persons)
     {
-
         if (person->get_name() == name)
         {
             return person;
         }
-        else
-            person = person++;
-    } while (person != m_persons.back());
+    }
     return nullptr;
 }
 
 void CBookings::printBookings()
 {
     std::cout << "Belegungen:" << std::endl << std::endl;
-    int len_m_bookings = m_bookings.size();
-    for (int i= 0; i < len_m_bookings; i++)
+    for (const auto& entry : m_bookings)
     {
-        m_bookings[i]->print();
-        std::cout << std::endl << std::endl;
+        entry->print();
+        std::cout << std::endl;
     }
 }
 
 
 void CBookings::printPersons()
 {
-    std::cout << "Personen:" << std::endl << std::endl;
-    CPerson* person = m_persons.front();
-    do
+    std::cout << "Personen:" << std::endl;
+    for (const auto& person : m_persons)
     {
         person->print();
-        person = person++;
-    } while (person != m_persons.back());
-    std::cout << std::endl;
+        std::cout << std::endl;
+    }
 }
 
 void CBookings::operator()(OutputFormats oformat)
 {
-    if (oformat == 1)
+    switch (oformat)
     {
-        std::cout << "Personen: " << std::endl;
-        CPerson* person = m_persons.front();
-        do
+        case ofPersons:
+            printPersons();
+            std::cout << std::endl;
+            return;
+        case ofStudents:
+            printStudents(m_persons);
+            std::cout << std::endl;
+            return;
+        case ofTeachers:
+            printTeachers(m_persons);
+            std::cout << std::endl;
+            return;
+        case ofBookings:
         {
-            person->print();
-        } while (person != m_persons.back());
-        std::cout << std::endl;
-    }
-    if (oformat == 2)
-    {
-        std::cout << "Studenten: " << std::endl;
-        CPerson* person = m_persons.front();
-        if (dynamic_cast<CStudent*>(person) != nullptr)
+            std::cout << "Belegungen: " << std::endl;
+            int len_m_bookings = m_bookings.size();
+            for (int i= 0; i < len_m_bookings; i++)
             {
-                do
-                {
-                    person->print();
-                } while (person != m_persons.back());
+                m_bookings[i]->print();
+                std::cout << std::endl << std::endl;
             }
-        std::cout << std::endl;
-    }
-    if (oformat == 3)
-    {
-        std::cout << "Dozenten: " << std::endl;
-        CPerson* person = m_persons.front();
-        if (dynamic_cast<CTeacher*>(person) != nullptr)
-            {
-                do
-                {
-                    person->print();
-                } while (person != m_persons.back());
-            }
-        std::cout << std::endl;
-    }
-    if (oformat == 4)
-    {
-        std::cout << "Belegungen: " << std::endl;
-        int len_m_bookings = m_bookings.size();
-        for (int i= 0; i < len_m_bookings; i++)
-        {
-            m_bookings[i]->print();
-            std::cout << std::endl << std::endl;
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
     }
 }

@@ -2,6 +2,7 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <math.h>
 
 
 CTime::CTime() {
@@ -50,4 +51,30 @@ void CTime::set_time(short hours, short minutes, short seconds)
     m_hours = hours;
     m_minutes = minutes;
     m_seconds = seconds;
+}
+
+CTime CTime::operator+(short adtl_minutes)
+{
+    short end_hours = this->get_hours();
+    float end_minutes = this->get_minutes();
+    short end_seconds = this->get_seconds();
+
+    if (adtl_minutes % 60 == 0)
+    {
+        end_hours += adtl_minutes / 60;
+    }
+    else
+    {
+        float adtl_hours = std::ceil(adtl_minutes / 60);
+        end_hours += adtl_hours;
+        float remaining_minutes = float(adtl_minutes) / 60 - adtl_hours;
+        end_minutes = end_minutes + (remaining_minutes * 60);
+        if (end_minutes >= 60)
+        {
+            end_minutes = end_minutes - 60;
+            end_hours++;
+        }
+    }
+    CTime end_time(end_hours, end_minutes, end_seconds);
+    return end_time;
 }

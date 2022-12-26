@@ -32,7 +32,38 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="caddress.cpp" />
+		<Unit filename="caddress.hpp" />
+		<Unit filename="cblock.cpp" />
+		<Unit filename="cblock.hpp" />
+		<Unit filename="cbooking.cpp" />
+		<Unit filename="cbooking.hpp" />
+		<Unit filename="cbookings.cpp" />
+		<Unit filename="cbookings.hpp" />
+		<Unit filename="cdate.cpp" />
+		<Unit filename="cdate.hpp" />
+		<Unit filename="cevent.cpp" />
+		<Unit filename="cevent.hpp" />
+		<Unit filename="cevents.cpp" />
+		<Unit filename="cevents.hpp" />
+		<Unit filename="clist.hpp" />
+		<Unit filename="cperson.cpp" />
+		<Unit filename="cperson.hpp" />
+		<Unit filename="croom.cpp" />
+		<Unit filename="croom.hpp" />
+		<Unit filename="cstudent.cpp" />
+		<Unit filename="cstudent.hpp" />
+		<Unit filename="cstudy.cpp" />
+		<Unit filename="cstudy.hpp" />
+		<Unit filename="csubject.cpp" />
+		<Unit filename="csubject.hpp" />
+		<Unit filename="cteacher.cpp" />
+		<Unit filename="cteacher.hpp" />
+		<Unit filename="ctime.cpp" />
+		<Unit filename="ctime.hpp" />
+		<Unit filename="ctutor.cpp" />
+		<Unit filename="ctutor.hpp" />
+		<Unit filename="ueb07.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

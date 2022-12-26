@@ -11,6 +11,7 @@ public:
     int get_seconds();
     void print();
     void set_time(short hours, short minutes, short seconds);
+    CTime operator+(short);
 
 private:
     short m_hours, m_minutes, m_seconds;
