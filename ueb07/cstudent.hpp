@@ -17,13 +17,14 @@ public:
                     unsigned int mat_nr, unsigned short fs, unsigned credits, CStudy* study);
     CStudent();
     ~CStudent();
-    void print();
+    virtual std::ostream& print(std::ostream&);
     int get_mat_nr();
     void set_mat_nr(unsigned int);
     void set_fs(unsigned short);
     void set_credits(unsigned);
     void set_study(CStudy* study);
     void load(std::ifstream& input, CBookings& bookings);
+    std::ostream& operator<<(std::ostream& ostr);
 
 private:
     unsigned int m_mat_nr;

@@ -15,8 +15,8 @@ void printStudents(
     {
         if (dynamic_cast<CStudent*>(person) != nullptr)
         {
-            person->print();
-            std::cout << std::endl;
+            //person->print();
+            std::cout << person << std::endl;
         }
     }
 }

@@ -638,7 +638,7 @@ A::operator-(A b)
 
 ostream& A::print(ostream& ostr) 
 {
-    ostr <<< value;
+    ostr << value;
     return ostr;
 }
 
