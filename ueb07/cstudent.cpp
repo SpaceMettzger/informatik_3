@@ -53,17 +53,12 @@ std::ostream& CStudent::print(std::ostream& ostr)
         get_date().print();
         int id = get_id();
         ostr << "; ID " << id << "; MatNr. " << m_mat_nr << ")";
-        ostr << "test";
         return ostr;
 }
 
-
-// Hier und bei der print funktion drüber klappt was nicht. Anstatt dass die Print funktion ausgegeben wird,
-// wird eine Speicheradresse ausgegeben. Kempfer kann da bestimmt helfen. Die funktion muss dann noch bei 
-// CTutor und CTeacher eingefügt werden 
-std::ostream& CStudent::operator<<(std::ostream& ostr)
+std::ostream& operator<<(std::ostream& ostr, CStudent& student)
 {
-    return this->print(ostr);
+    return student.print(ostr);
 }
 
 void CStudent::load(std::ifstream& input, CBookings& bookings)

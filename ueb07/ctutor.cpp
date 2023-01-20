@@ -17,15 +17,16 @@ CTutor::~CTutor()
     std::cout << "Tutor*in " << get_name() << " wird vernichtet" << std::endl;
 }
 
-void CTutor::print()
+std::ostream& CTutor::print(std::ostream& ostr)
 {
         std::string name = get_name();
-        std::cout << name << " (*";
+        ostr << name << " (*";
         get_date().print();
         int id = get_id();
         int mat_nr = get_mat_nr();
         int pers_nr = get_pers_nr();
-        std::cout << "; ID " << id << "; MatNr. " << mat_nr << "; PersNr. " << pers_nr << ")";
+        ostr << "; ID " << id << "; MatNr. " << mat_nr << "; PersNr. " << pers_nr << ")";
+        return ostr;
 };
 
 void CTutor::load(std::ifstream& input, CBookings& bookings)

@@ -32,7 +32,7 @@ void CBooking::print()
     m_booking_time.print();
     std::cout << std::endl;
     std::cout << "hat ";
-    m_student->print();
+    std::cout << *m_student;
     std::cout << std::endl;
     std::cout << "das Fach ";
     m_subject->print();

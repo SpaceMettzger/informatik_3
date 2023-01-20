@@ -76,3 +76,13 @@ ueb06/obj/Debug/csubject.o
 ueb06/obj/Debug/ctime.o
 ueb06/obj/Debug/ctutor.o
 ueb06/obj/Debug/ueb06.o
+ueb07/ueb07.depend
+ueb07/ueb07.layout
+ueb07/bin/Debug/ueb07
+ueb07/obj/Debug/cblock.o
+ueb07/obj/Debug/cbooking.o
+ueb07/obj/Debug/cbookings.o
+ueb07/obj/Debug/cperson.o
+ueb07/obj/Debug/cstudent.o
+ueb07/obj/Debug/cteacher.o
+ueb07/obj/Debug/ctutor.o

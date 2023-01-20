@@ -26,15 +26,16 @@ CPerson::~CPerson()
     std::cout << "Person " << m_name << " wird vernichtet" << std::endl;
 }
 
-void CPerson::print()
+std::ostream& CPerson::print(std::ostream& ostr)
 {
     short year = m_birth_date.get_year();
     short month = m_birth_date.get_month();
     short day = m_birth_date.get_day();
     char fl;
     fl = std::cout.fill('0');
-    std::cout << m_name << " (*" << std::setw(2) << day << "." << std::setw(2) << month << "." << std::setw(4) << year  << ")";
+    ostr << m_name << " (*" << std::setw(2) << day << "." << std::setw(2) << month << "." << std::setw(4) << year  << ")";
     std::cout.fill(fl);
+    return ostr;
 }
 
 CAddress& CPerson::getAddress()
@@ -70,4 +71,9 @@ void CPerson::set_address(std::string street, std::string number, int zip, std::
 void CPerson::set_date(int day, int month, int year)
 {
     m_birth_date.set_date(day, month, year);
+}
+
+std::ostream& operator<<(std::ostream& ostr, CPerson& person)
+{
+    return person.print(ostr);
 }

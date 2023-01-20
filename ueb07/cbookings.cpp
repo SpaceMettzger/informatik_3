@@ -7,8 +7,7 @@
 namespace
 {
 
-void printStudents(
-    CList <CPerson*>& persons)
+void printStudents(CList <CPerson*>& persons)
 {
     std::cout << "Students:" << std::endl;
     for (const auto& person : persons)
@@ -16,7 +15,7 @@ void printStudents(
         if (dynamic_cast<CStudent*>(person) != nullptr)
         {
             //person->print();
-            std::cout << person << std::endl;
+            std::cout << *person << std::endl;
         }
     }
 }
@@ -29,8 +28,7 @@ void printTeachers(
     {
         if (dynamic_cast<CTeacher*>(person) != nullptr)
         {
-            person->print();
-            std::cout << std::endl;
+            std::cout << *person << std::endl;
         }
     }
 }
@@ -238,7 +236,7 @@ void CBookings::printPersons()
     std::cout << "Personen:" << std::endl;
     for (const auto& person : m_persons)
     {
-        person->print();
+        std::cout << *person;
         std::cout << std::endl;
     }
 }

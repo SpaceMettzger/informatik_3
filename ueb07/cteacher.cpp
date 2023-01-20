@@ -28,15 +28,21 @@ int CTeacher::get_pers_nr()
 }
 
 
-void CTeacher::print()
+std::ostream& CTeacher::print(std::ostream& ostr)
 {
         std::string name = get_name();
-        std::cout << name << " (*";
+        ostr << name << " (*";
         get_date().print();
         int id = get_id();
-        std::cout << "; ID " << id  << "; PersNr. " << m_pers_nr << ")";
+        ostr << "; ID " << id  << "; PersNr. " << m_pers_nr << ")";
+        return ostr;
 };
 
+
+std::ostream& operator<<(std::ostream& ostr, CTeacher& teacher)
+{
+    return teacher.print(ostr);
+}
 
 void CTeacher::load(std::ifstream& input, CBookings& bookings)
 {

@@ -17,8 +17,9 @@ public:
     ~CTeacher();
     void set_pers_nr(unsigned int);
     int get_pers_nr();
-    void print();
+    virtual std::ostream& print(std::ostream& ostr);
     void load(std::ifstream& input, CBookings& bookings);
+    friend std::ostream& operator<<(std::ostream& ostr, CTeacher& teacher);
 
 private:
     unsigned int m_pers_nr;

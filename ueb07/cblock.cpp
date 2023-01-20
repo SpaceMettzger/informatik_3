@@ -18,7 +18,7 @@ CBlock::CBlock() {}
 CBlock::~CBlock()
 {
     CTime end_time = m_start_time + 90;
-    std::cout << "Block Nr. " << m_block_id << "(";
+    std::cout << "Block Nr. " << m_block_id << " (";
      m_start_time.print();
      std::cout << " - ";
     end_time.print();

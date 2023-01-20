@@ -1039,3 +1039,17 @@ int main()
 {
     cout << ZweiHoch<11>::Wert;
 }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+// Iteratoren
+
+
+int i = 3;
+vector <int*> z;
+z.push_back(&i);
+
+for (unsigned x = 0; x < z.size(); x++)
+    cout << *(z[x]) << endl;
+
+for (vector <int *>:: iterator it = z.begin(); it != z.end(); it++)
+    cout << *it << endl;

@@ -24,7 +24,7 @@ public:
     void set_credits(unsigned);
     void set_study(CStudy* study);
     void load(std::ifstream& input, CBookings& bookings);
-    std::ostream& operator<<(std::ostream& ostr);
+    friend std::ostream& operator<<(std::ostream& ostr, CStudent& student);
 
 private:
     unsigned int m_mat_nr;
